@@ -8,14 +8,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
-
 import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class HomeFormController {
+
     @FXML
     private TextField txtName;
-    String name = "";
+
+    String name;
+
+    public void initialize(){}
 
     @FXML
     private void btnJoinOnAction(ActionEvent actionEvent) {
@@ -33,8 +36,8 @@ public class HomeFormController {
         boolean isNameValidated = Pattern.compile("^[A-z]{1,20}$").matcher(name).matches();
 
         if (!isNameValidated) {
-            txtName.requestFocus();
             txtName.setStyle("-fx-border-color:#ff0000;");
+            txtName.requestFocus();
             return false;
         } else
             return true;
