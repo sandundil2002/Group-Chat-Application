@@ -22,13 +22,7 @@
     -fx-border-radius: 0,30, 30 ,0;
     -fx-opacity: 100;
 }
-.btn {
-    -fx-background-color: transparent;
-    -fx-border-color: #000000;
-    -fx-border-radius: 30;
-    -fx-background-radius: 30;
-    -fx-font-size: 15;
-}
+
 
 .btn:hover {
     -fx-background-color: #ffa675;
@@ -41,3 +35,5 @@
     -fx-background-radius: 50;
     -fx-text-alignment: Center;
 }
+
+
