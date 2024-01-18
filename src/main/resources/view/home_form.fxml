@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../assets/style/home.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatapplication.controller.HomeFormController">
    <children>
       <ImageView fitHeight="264.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +34,7 @@
          </font>
       </Text>
       <TextField fx:id="txtName" layoutX="126.0" layoutY="393.0" prefHeight="34.0" prefWidth="170.0" promptText="Name" styleClass="rgb" stylesheets="@../assets/style/home.css" />
-      <JFXButton layoutX="159.0" layoutY="450.0" minWidth="96.0" onAction="#btnLoginOnAction" prefHeight="35.0" prefWidth="96.0" styleClass="btn" stylesheets="@../assets/style/home.css" text="Login" />
+      <JFXButton layoutX="159.0" layoutY="450.0" minWidth="96.0" onAction="#btnJoinOnAction" prefHeight="35.0" prefWidth="96.0" styleClass="btn" stylesheets="@../assets/style/home.css" text="Join" />
       <Label alignment="CENTER" layoutX="3.0" layoutY="582.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
          <font>
             <Font size="10.0" />
