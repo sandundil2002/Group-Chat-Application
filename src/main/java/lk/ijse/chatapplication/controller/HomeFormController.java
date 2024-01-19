@@ -18,7 +18,9 @@ public class HomeFormController {
 
     String name;
 
-    public void initialize(){}
+    public void initialize(){
+        loadServerForm();
+    }
 
     @FXML
     private void btnJoinOnAction(ActionEvent actionEvent) {
@@ -49,7 +51,20 @@ public class HomeFormController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Client");
+            stage.setTitle("Client Form");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadServerForm(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/server_form.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Server Form");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

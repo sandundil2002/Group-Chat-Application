@@ -1,0 +1,17 @@
+.lbl-background {
+    -fx-background-color: linear-gradient(to left top,rgba(96,97,101,1) , #40EB4B);
+    -fx-font-family: Kanit;
+    -fx-font-size: 25;
+    -fx-text-fill: #000000;
+    -fx-font-weight: 800;
+    -fx-background-radius: 30;
+}
+
+.stop-btn{
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: #f8e0c8;
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+    -fx-border-color: red;
+}

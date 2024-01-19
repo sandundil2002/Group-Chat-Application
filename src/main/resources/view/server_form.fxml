@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.chatapplication.controller.ServerFormControlller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatapplication.controller.ServerFormController">
+   <children>
+      <Label layoutX="119.0" layoutY="19.0" prefHeight="52.0" prefWidth="171.0" styleClass="lbl-background" stylesheets="@../assets/style/server.css" text=" Server Status" textAlignment="CENTER" />
+      <ImageView fitHeight="46.0" fitWidth="48.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/icons8-company-64.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="10.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Tech">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="46.0" fitWidth="48.0" layoutX="346.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/green.png" />
+         </image>
+      </ImageView>
+      <JFXTextArea fx:id="txtArea" editable="false" layoutX="13.0" layoutY="135.0" prefHeight="438.0" prefWidth="374.0" />
+      <Text layoutX="25.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Online :">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblOnlineCount" layoutX="84.0" layoutY="93.0" prefHeight="18.0" prefWidth="51.0" />
+      <JFXButton layoutX="301.0" layoutY="78.0" onAction="#btnStopOnAction" prefHeight="29.0" prefWidth="72.0" styleClass="stop-btn" stylesheets="@../assets/style/server.css" text="Stop" />
+      <Label alignment="CENTER" layoutX="3.0" layoutY="582.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
