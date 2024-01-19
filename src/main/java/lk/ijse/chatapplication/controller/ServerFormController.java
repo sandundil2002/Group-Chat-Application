@@ -23,7 +23,7 @@ public class ServerFormController {
         new Thread(() -> {
             try {
                 serverSocket = new ServerSocket(3002);
-                txtArea.setText("Server started");
+                txtArea.setText("Server started waiting for client connection...");
                 socket = serverSocket.accept();
                 txtArea.setText("Client connected");
                 dataInputStream = new DataInputStream(socket.getInputStream());

@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatapplication.controller.ClientFormController">
-
+   <children>
+      <Label layoutY="2.0" prefHeight="52.0" prefWidth="400.0" styleClass="chat-head-label" stylesheets="@../assets/style/client.css" />
+      <ImageView fitHeight="42.0" fitWidth="47.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/back%20btn.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
+      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/chat%20head.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblName" layoutX="132.0" layoutY="11.0" prefHeight="32.0" prefWidth="66.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
+      <JFXButton layoutX="82.0" layoutY="260.0" prefHeight="40.0" prefWidth="52.0" text="." textFill="#3498db" />
+      <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="352.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/theree%20dots.png" />
+         </image>
+      </ImageView>
+      <JFXTextArea fx:id="txtArea" editable="false" layoutX="6.0" layoutY="60.0" prefHeight="460.0" prefWidth="387.0" styleClass="chat-area" stylesheets="@../assets/style/client.css" />
+      <TextField layoutX="7.0" layoutY="534.0" onAction="#txtMsgOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
+      <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
+      <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="290.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/emoji%20icon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="290.0" layoutY="534.0" onAction="#btnEmojiOnAction" prefHeight="34.0" prefWidth="33.0" text="." textFill="#faf7f7" />
+      <Label alignment="CENTER" layoutX="3.0" layoutY="579.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
