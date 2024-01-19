@@ -33,11 +33,8 @@ public class ClientFormController {
                 socket = new Socket("localhost",3002);
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
-
-                while (!message.equals("end")){
-                    message = dataInputStream.readUTF();
-                    txtArea.appendText("\nServer: "+message);
-                }
+                message = dataInputStream.readUTF();
+                txtArea.appendText("\nServer: "+message);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -52,6 +49,7 @@ public class ClientFormController {
     private void btnSendOnAction(ActionEvent actionEvent) {
         try {
             dataOutputStream.writeUTF(txtMsg.getText().trim());
+            txtArea.appendText("\nMe: "+txtMsg.getText());
             dataOutputStream.flush();
             txtMsg.setText("");
         } catch (IOException e) {

@@ -28,10 +28,7 @@ public class ServerFormController {
                 txtArea.setText("Client connected");
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
-
-                while (!message.equals("end")){
-                    message = dataInputStream.readUTF();
-                }
+                message = dataInputStream.readUTF();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
