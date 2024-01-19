@@ -16,7 +16,7 @@ public class HomeFormController {
     @FXML
     private TextField txtName;
 
-    String name;
+    static String name;
 
     public void initialize(){
         loadServerForm();

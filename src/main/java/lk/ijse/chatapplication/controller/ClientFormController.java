@@ -4,8 +4,17 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 public class ClientFormController {
+
+    @FXML
+    private TextField txtMsg;
 
     @FXML
     private Label lblName;
@@ -13,16 +22,41 @@ public class ClientFormController {
     @FXML
     private JFXTextArea txtArea;
 
+    Socket socket;
+    DataOutputStream dataOutputStream;
+    DataInputStream dataInputStream;
+    String message = "";
+
+    public void initialize(){
+        new Thread(() -> {
+            try {
+                socket = new Socket("localhost",3002);
+                dataInputStream = new DataInputStream(socket.getInputStream());
+                dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+                while (!message.equals("end")){
+                    message = dataInputStream.readUTF();
+                    txtArea.appendText("\nServer: "+message);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
+    }
+
     @FXML
     private void btnBackOnAction(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void txtMsgOnAction(ActionEvent actionEvent) {
-    }
-
-    @FXML
     private void btnSendOnAction(ActionEvent actionEvent) {
+        try {
+            dataOutputStream.writeUTF(txtMsg.getText().trim());
+            dataOutputStream.flush();
+            txtMsg.setText("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
