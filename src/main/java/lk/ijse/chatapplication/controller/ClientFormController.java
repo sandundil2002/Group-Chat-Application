@@ -23,9 +23,12 @@ public class ClientFormController {
     private JFXTextArea txtArea;
 
     Socket socket;
+
     DataOutputStream dataOutputStream;
+
     DataInputStream dataInputStream;
-    String message = "";
+
+    String message;
 
     public void initialize(){
         new Thread(() -> {
@@ -59,5 +62,9 @@ public class ClientFormController {
 
     @FXML
     private void btnEmojiOnAction(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void btnImageOnAction(ActionEvent actionEvent) {
     }
 }

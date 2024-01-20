@@ -15,7 +15,7 @@
 }
 
 .chat-area {
-    -fx-background-color: #ecf0f1; /* Background color for the chat area */
+    -fx-background-color: #f5f5dc; /* Background color for the chat area */
     -fx-text-fill: #333333; /* Text color for the chat messages */
     -fx-font-size: 14px; /* Adjust font size as needed */
     -fx-padding: 10px; /* Adjust padding as needed */
@@ -51,4 +51,8 @@
 
 .send-msg-button:hover {
     -fx-background-color: #2980b9; /* Background color on hover */
+}
+
+.chat-background {
+    -fx-background-color: #aed6f1; /* Background color for the chat interface */
 }

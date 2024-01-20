@@ -2,6 +2,7 @@ package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.io.DataInputStream;
@@ -11,13 +12,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerFormController {
-    public JFXTextArea txtArea;
-    public Label lblOnlineCount;
+
+    @FXML
+    private JFXTextArea txtArea;
+
+    @FXML
+    private Label lblOnlineCount;
+
     ServerSocket serverSocket;
+
     Socket socket;
+
     DataOutputStream dataOutputStream;
+
     DataInputStream dataInputStream;
-    String message = "";
+
+    String message;
 
     public void initialize(){
         new Thread(() -> {
@@ -25,7 +35,7 @@ public class ServerFormController {
                 serverSocket = new ServerSocket(3002);
                 txtArea.setText("Server started waiting for client connection...");
                 socket = serverSocket.accept();
-                txtArea.setText("Client connected");
+                txtArea.appendText("\nClient connected");
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 message = dataInputStream.readUTF();
