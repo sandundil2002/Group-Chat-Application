@@ -19,49 +19,66 @@ public class ServerFormController {
     @FXML
     private Label lblOnlineCount;
 
-    ServerSocket serverSocket;
-
-    Socket clientSocket;
-
-    DataOutputStream dataOutputStream;
-
-    DataInputStream dataInputStream;
-
-    String message;
+    private ServerSocket serverSocket;
 
     private static final List<Socket> socketList = new ArrayList<>();
 
-    public void initialize(){
-        new Thread(() -> {
-            try {
-                serverSocket = new ServerSocket(3002);
-                txtArea.setText("Server started waiting for client connection...");
+    private static final List<DataOutputStream> clients = new ArrayList<>();
+
+    public void initialize() {
+        try {
+            serverSocket = new ServerSocket(3002);
+            txtArea.setText("Server started waiting for client connection...");
+
+            new Thread(() -> {
                 while (true) {
-                    clientSocket = serverSocket.accept();
-                    txtArea.appendText("\nClient connected " + clientSocket);
-                    Thread clientThread = new Thread(() -> {
-                        try {
-                            dataInputStream = new DataInputStream(clientSocket.getInputStream());
-                            socketList.add(clientSocket);
-                            setOnlineClients();
-                            message = dataInputStream.readUTF();
-                        } catch (IOException e) {
-                            txtArea.appendText("\n"+"Client disconnected ! ");
-                        }
-                    });
-                    clientThread.start();
+                    try {
+                        Socket clientSocket = serverSocket.accept();
+                        txtArea.appendText("\nClient connected ");
+                        DataOutputStream dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
+                        clients.add(dataOutputStream);
+                        socketList.add(clientSocket);
+                        setOnlineClients();
+                        new Thread(() -> handleClient(clientSocket)).start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
+            }).start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void setOnlineClients(){
+    private void handleClient(Socket clientSocket) {
+        try {
+            DataInputStream inputStream = new DataInputStream(clientSocket.getInputStream());
+
+            while (true) {
+                String message = inputStream.readUTF();
+
+                // Broadcast the message to all connected clients
+                for (DataOutputStream client : clients) {
+                    client.writeUTF(message);
+                    client.flush();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setOnlineClients() {
         Platform.runLater(() -> lblOnlineCount.setText(String.valueOf(socketList.size())));
     }
 
-    public void btnStopOnAction(ActionEvent actionEvent) {
+    @FXML
+    private void btnStopOnAction(ActionEvent actionEvent) {
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
 }

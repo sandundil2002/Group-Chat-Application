@@ -8,6 +8,9 @@ import javafx.scene.control.TextField;
 
 import java.io.*;
 import java.net.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ClientFormController {
 
@@ -30,36 +33,42 @@ public class ClientFormController {
 
     static String clientName;
 
-    public void initialize(){
+    public void initialize() {
         lblName.setText(HomeFormController.name);
         clientName = lblName.getText();
+
         new Thread(() -> {
             try {
-                socket = new Socket("localhost",3002);
+                socket = new Socket("localhost", 3002);
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                message = dataInputStream.readUTF();
-                txtArea.appendText("\nServer: "+message);
+
+                while (true) {
+                    String message = dataInputStream.readUTF();
+                    txtArea.appendText("\n" + message);
+                }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }).start();
     }
 
     @FXML
-    private void btnBackOnAction(ActionEvent actionEvent) {
-    }
-
-    @FXML
     private void btnSendOnAction(ActionEvent actionEvent) {
         try {
-            dataOutputStream.writeUTF(txtMsg.getText().trim());
-            txtArea.appendText("\nMe: "+txtMsg.getText());
+            String message = clientName + ": " + txtMsg.getText().trim();
+            dataOutputStream.writeUTF(message);
             dataOutputStream.flush();
-            txtMsg.setText("");
+            txtMsg.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @FXML
+    private void btnBackOnAction(ActionEvent actionEvent) {
+        System.exit(0);
     }
 
     @FXML
