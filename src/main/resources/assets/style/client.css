@@ -9,7 +9,7 @@
 
 .chat-name-label {
     -fx-text-fill: #333333; /* Text color for the name label */
-    -fx-font-size: 12px; /* Adjust font size as needed */
+    -fx-font-size: 15px; /* Adjust font size as needed */
     -fx-font-weight: bold; /* Make the text bold if desired */
     -fx-padding: 2px 5px; /* Adjust padding as needed */
 }

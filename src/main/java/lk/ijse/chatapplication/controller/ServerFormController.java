@@ -1,12 +1,15 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerFormController {
 
@@ -18,7 +21,7 @@ public class ServerFormController {
 
     ServerSocket serverSocket;
 
-    Socket socket;
+    Socket clientSocket;
 
     DataOutputStream dataOutputStream;
 
@@ -26,20 +29,36 @@ public class ServerFormController {
 
     String message;
 
+    private static final List<Socket> socketList = new ArrayList<>();
+
     public void initialize(){
         new Thread(() -> {
             try {
                 serverSocket = new ServerSocket(3002);
                 txtArea.setText("Server started waiting for client connection...");
-                socket = serverSocket.accept();
-                txtArea.appendText("\nClient connected");
-                dataInputStream = new DataInputStream(socket.getInputStream());
-                dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                message = dataInputStream.readUTF();
+                while (true) {
+                    clientSocket = serverSocket.accept();
+                    txtArea.appendText("\nClient connected " + clientSocket);
+                    Thread clientThread = new Thread(() -> {
+                        try {
+                            dataInputStream = new DataInputStream(clientSocket.getInputStream());
+                            socketList.add(clientSocket);
+                            setOnlineClients();
+                            message = dataInputStream.readUTF();
+                        } catch (IOException e) {
+                            txtArea.appendText("\n"+"Client disconnected ! ");
+                        }
+                    });
+                    clientThread.start();
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }).start();
+    }
+
+    private void setOnlineClients(){
+        Platform.runLater(() -> lblOnlineCount.setText(String.valueOf(socketList.size())));
     }
 
     public void btnStopOnAction(ActionEvent actionEvent) {

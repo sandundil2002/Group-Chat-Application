@@ -28,7 +28,11 @@ public class ClientFormController {
 
     String message;
 
+    static String clientName;
+
     public void initialize(){
+        lblName.setText(HomeFormController.name);
+        clientName = lblName.getText();
         new Thread(() -> {
             try {
                 socket = new Socket("localhost",3002);
