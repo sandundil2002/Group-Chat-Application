@@ -21,6 +21,8 @@ public class ServerFormController {
 
     private ServerSocket serverSocket;
 
+    private DataOutputStream dataOutputStream;
+
     private static final List<Socket> socketList = new ArrayList<>();
 
     private static final List<DataOutputStream> clients = new ArrayList<>();
@@ -35,7 +37,7 @@ public class ServerFormController {
                     try {
                         Socket clientSocket = serverSocket.accept();
                         txtArea.appendText("\nClient connected ");
-                        DataOutputStream dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
+                        dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);
                         setOnlineClients();
@@ -56,8 +58,6 @@ public class ServerFormController {
 
             while (true) {
                 String message = inputStream.readUTF();
-
-                // Broadcast the message to all connected clients
                 for (DataOutputStream client : clients) {
                     client.writeUTF(message);
                     client.flush();
@@ -74,11 +74,6 @@ public class ServerFormController {
 
     @FXML
     private void btnStopOnAction(ActionEvent actionEvent) {
-        try {
-            serverSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         System.exit(0);
     }
 }

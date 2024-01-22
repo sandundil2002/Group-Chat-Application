@@ -1,16 +1,15 @@
 package lk.ijse.chatapplication.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class ClientFormController {
 
@@ -23,13 +22,14 @@ public class ClientFormController {
     @FXML
     private JFXTextArea txtArea;
 
+    @FXML
+    private JFXButton btnId;
+
     Socket socket;
 
     DataOutputStream dataOutputStream;
 
     DataInputStream dataInputStream;
-
-    String message;
 
     static String clientName;
 
@@ -68,7 +68,13 @@ public class ClientFormController {
 
     @FXML
     private void btnBackOnAction(ActionEvent actionEvent) {
-        System.exit(0);
+        try {
+            dataOutputStream.flush();
+            Stage stage = (Stage) btnId.getScene().getWindow();
+            stage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

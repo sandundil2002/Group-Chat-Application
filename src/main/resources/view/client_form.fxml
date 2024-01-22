@@ -17,7 +17,7 @@
             <Image url="@../assets/images/back%20btn.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
+      <JFXButton fx:id="btnId" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/chat%20head.png" />
