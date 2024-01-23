@@ -36,7 +36,7 @@ public class ServerFormController {
                 while (true) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        txtArea.appendText("\nClient connected ");
+                        txtArea.appendText("\n"+HomeFormController.name + " connected ");
                         dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);

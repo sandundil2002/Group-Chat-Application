@@ -55,13 +55,15 @@ public class ClientFormController {
 
     @FXML
     private void btnSendOnAction(ActionEvent actionEvent) {
-        try {
-            String message = clientName + ": " + txtMsg.getText().trim();
-            dataOutputStream.writeUTF(message);
-            dataOutputStream.flush();
-            txtMsg.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (validateMsg()) {
+            try {
+                String message = lblName.getText() + " : " + txtMsg.getText();
+                dataOutputStream.writeUTF(message);
+                dataOutputStream.flush();
+                txtMsg.clear();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -83,5 +85,16 @@ public class ClientFormController {
 
     @FXML
     private void btnImageOnAction(ActionEvent actionEvent) {
+    }
+
+    private boolean validateMsg(){
+        if (txtMsg.getText().trim().isEmpty()) {
+            txtMsg.requestFocus();
+            txtMsg.setStyle("-fx-border-color:#ff0000;");
+            return false;
+        } else {
+            txtMsg.setStyle("-fx-border-color:black;");
+            return true;
+        }
     }
 }

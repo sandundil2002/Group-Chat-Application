@@ -30,7 +30,7 @@
     -fx-text-fill: #333333; /* Text color for the typed message */
     -fx-font-size: 14px; /* Adjust font size as needed */
     -fx-padding: 5px; /* Adjust padding as needed */
-    -fx-border-color: #bdc3c7; /* Border color for the input field */
+    -fx-border-color: black; /* Border color for the input field */
     -fx-border-width: 1px; /* Border width for the input field */
     -fx-border-radius: 5px; /* Rounded corners for the input field */
 }
