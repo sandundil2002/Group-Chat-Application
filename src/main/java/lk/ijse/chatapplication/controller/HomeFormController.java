@@ -1,11 +1,12 @@
 package lk.ijse.chatapplication.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class HomeFormController {
     }
 
     @FXML
-    private void btnJoinOnAction(ActionEvent actionEvent) {
+    private void btnJoinOnAction() {
         if (validateName()){
             loadClientForm();
             clearField();
@@ -74,5 +75,12 @@ public class HomeFormController {
     private void clearField(){
         txtName.clear();
         txtName.requestFocus();
+    }
+
+    @FXML
+    public void enterKeyLogin(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER){
+            System.out.println("if");
+        }
     }
 }

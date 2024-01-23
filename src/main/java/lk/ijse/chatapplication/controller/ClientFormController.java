@@ -1,11 +1,13 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -14,16 +16,16 @@ import java.net.*;
 public class ClientFormController {
 
     @FXML
+    private VBox txtVbox;
+
+    @FXML
     private TextField txtMsg;
 
     @FXML
     private Label lblName;
 
     @FXML
-    private JFXTextArea txtArea;
-
-    @FXML
-    private JFXButton btnId;
+    private JFXButton btnBack;
 
     Socket socket;
 
@@ -32,6 +34,8 @@ public class ClientFormController {
     DataInputStream dataInputStream;
 
     static String clientName;
+
+    static String message;
 
     public void initialize() {
         lblName.setText(HomeFormController.name);
@@ -44,8 +48,12 @@ public class ClientFormController {
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
                 while (true) {
-                    String message = dataInputStream.readUTF();
-                    txtArea.appendText("\n" + message);
+                    message = dataInputStream.readUTF();
+
+                    Platform.runLater(() -> {
+                        Text textNode = new Text(message);
+                        txtVbox.getChildren().add(textNode);
+                    });
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -67,12 +75,11 @@ public class ClientFormController {
         }
     }
 
-
     @FXML
     private void btnBackOnAction(ActionEvent actionEvent) {
         try {
             dataOutputStream.flush();
-            Stage stage = (Stage) btnId.getScene().getWindow();
+            Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -56,3 +56,54 @@
 .chat-background {
     -fx-background-color: #aed6f1; /* Background color for the chat interface */
 }
+
+/* Apply styles to the content of the ScrollPane */
+.scroll-pane .content {
+    -fx-background-color: #f0f0f0; /* Set background color */
+    -fx-padding: 10; /* Add padding for better readability */
+}
+
+/* Style the scroll bars */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: #dcdcdc; /* Set background color for vertical scrollbar */
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: #dcdcdc; /* Set background color for horizontal scrollbar */
+}
+
+/* Style the thumb of the scroll bars */
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #6a6a6a; /* Set thumb color */
+    -fx-background-insets: 0, 1, 2; /* Add insets for a border effect */
+    -fx-background-radius: 5; /* Set border radius for a rounded look */
+}
+
+/* Style the track of the scroll bars */
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: transparent; /* Set track color */
+}
+
+/* Style the arrows of the scroll bars (if applicable) */
+.scroll-pane .scroll-bar .increment-arrow, .scroll-pane .scroll-bar .decrement-arrow {
+    -fx-shape: ""; /* Hide the arrows */
+}
+
+/* Styling for the chat VBox */
+.vbox-chat {
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-padding: 10px; /* Padding around the VBox */
+    -fx-border-color: #ccc; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Border radius (rounded corners) */
+}
+
+/* Styling for individual chat messages */
+.text-message {
+    -fx-padding: 5px; /* Padding for each message */
+    -fx-background-color: #d9edf7; /* Background color for messages */
+    -fx-border-radius: 5px; /* Border radius for messages */
+}
+
+
+

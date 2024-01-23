@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="chat-background" stylesheets="@../assets/style/client.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chatapplication.controller.ClientFormController">
@@ -17,7 +18,7 @@
             <Image url="@../assets/images/back%20btn.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnId" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
+      <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/chat%20head.png" />
@@ -30,7 +31,6 @@
             <Image url="@../assets/images/theree%20dots.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="txtArea" editable="false" layoutX="6.0" layoutY="54.0" prefHeight="460.0" prefWidth="387.0" styleClass="chat-area" stylesheets="@../assets/style/client.css" />
       <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
       <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="251.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
@@ -50,5 +50,10 @@
          </image>
       </ImageView>
       <JFXButton layoutX="285.0" layoutY="535.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="38.0" text="." />
+      <ScrollPane layoutX="13.0" layoutY="68.0" prefHeight="450.0" prefWidth="374.0" styleClass="content" stylesheets="@../assets/style/client.css">
+         <content>
+            <VBox fx:id="txtVbox" prefHeight="451.0" prefWidth="358.0" styleClass="vbox-chat" stylesheets="@../assets/style/client.css" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

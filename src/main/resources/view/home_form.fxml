@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -34,7 +34,6 @@
          </font>
       </Text>
       <TextField fx:id="txtName" layoutX="125.0" layoutY="393.0" prefHeight="34.0" prefWidth="170.0" promptText="Name" styleClass="rgb" stylesheets="@../assets/style/home.css" />
-      <JFXButton layoutX="159.0" layoutY="450.0" minWidth="101.0" onAction="#btnJoinOnAction" prefHeight="35.0" prefWidth="101.0" styleClass="btn" stylesheets="@../assets/style/home.css" text="Join" />
       <Label alignment="CENTER" layoutX="3.0" layoutY="582.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
          <font>
             <Font size="10.0" />
@@ -46,5 +45,10 @@
             <Image url="@../assets/images/green.png" />
          </image>
       </ImageView>
+      <TextField editable="false" layoutX="151.0" layoutY="448.0" onKeyPressed="#enterKeyLogin" onMouseClicked="#btnJoinOnAction" prefHeight="39.0" prefWidth="124.0" styleClass="btn" stylesheets="@../assets/style/home.css" text="       Join">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
    </children>
 </AnchorPane>

@@ -94,6 +94,7 @@
     -fx-background-radius: 30;
     -fx-font-size: 17;
     -fx-text-fill: #6F17EB;
+    -fx-font-weight: 900;
 }
 
 .login-button {
