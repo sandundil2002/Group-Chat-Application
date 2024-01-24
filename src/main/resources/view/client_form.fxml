@@ -32,7 +32,7 @@
             <Image url="@../assets/images/theree%20dots.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" onKeyPressed="#btnEnterOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
+      <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
       <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="251.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/emoji%20icon.png" />

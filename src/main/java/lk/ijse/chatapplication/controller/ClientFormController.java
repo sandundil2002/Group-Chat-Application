@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -122,12 +120,6 @@ public class ClientFormController {
         } else {
             txtMsg.setStyle("-fx-border-color:black;");
             return true;
-        }
-    }
-
-    public void btnEnterOnAction(KeyEvent keyEvent) {
-        if (keyEvent.getCode() == KeyCode.ENTER){
-            System.out.println("hi");
         }
     }
 }

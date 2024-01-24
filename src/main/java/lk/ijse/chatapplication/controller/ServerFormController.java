@@ -11,8 +11,7 @@ import java.net.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ServerFormController {
 
@@ -58,7 +57,7 @@ public class ServerFormController {
                 while (true) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        txtArea.appendText("\n"+formattedTime+" - "+HomeFormController.name + " connected...");
+                        txtArea.appendText("\n"+formattedTime+" - "+HomeFormController.name + " connected... " + clientSocket);
                         dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);
@@ -83,7 +82,7 @@ public class ServerFormController {
                 if (!message.contains(":")){
                     socketList.remove(clientSocket);
                     setOnlineClients();
-                    txtArea.appendText("\n"+formattedTime+ " - "+ message + " disconnected...");
+                    txtArea.appendText("\n"+formattedTime+ " - "+ message + " disconnected... " + clientSocket);
                 }
 
                 for (DataOutputStream client : clients) {
