@@ -96,6 +96,7 @@
     -fx-border-color: #ccc; /* Border color */
     -fx-border-width: 1px; /* Border width */
     -fx-border-radius: 5px; /* Border radius (rounded corners) */
+    -fx-font-size: 18px;
 }
 
 /* Styling for individual chat messages */

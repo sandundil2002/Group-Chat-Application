@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -49,11 +51,13 @@ public class ClientFormController {
 
                 while (true) {
                     message = dataInputStream.readUTF();
-
-                    Platform.runLater(() -> {
-                        Text textNode = new Text(message);
-                        txtVbox.getChildren().add(textNode);
-                    });
+                    if (!message.startsWith(lblName.getText())){
+                        Platform.runLater(() -> {
+                            Text textNode = new Text(message);
+                            //txtVbox.setAlignment(Pos.TOP_LEFT);
+                            txtVbox.getChildren().add(textNode);
+                        });
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,14 +65,27 @@ public class ClientFormController {
         }).start();
     }
 
+    private boolean displayMsg(){
+        if (validateMsg()) {
+            String newMsg = "Me: " + txtMsg.getText();
+            Text textNode = new Text(newMsg);
+            TextFlow textFlow = new TextFlow(textNode);
+            textFlow.setTextAlignment(TextAlignment.RIGHT);
+            txtVbox.getChildren().add(textFlow);
+            return true;
+        }
+        return false;
+    }
+
     @FXML
     private void btnSendOnAction(ActionEvent actionEvent) {
-        if (validateMsg()) {
+        if (displayMsg()) {
             try {
-                String message = lblName.getText() + " : " + txtMsg.getText();
-                dataOutputStream.writeUTF(message);
+                String sendMsg = lblName.getText() + " : " + txtMsg.getText();
+                dataOutputStream.writeUTF(sendMsg);
                 dataOutputStream.flush();
                 txtMsg.clear();
+                txtMsg.requestFocus();
             } catch (IOException e) {
                 e.printStackTrace();
             }
