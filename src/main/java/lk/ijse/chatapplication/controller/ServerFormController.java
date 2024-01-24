@@ -30,6 +30,10 @@ public class ServerFormController {
 
     private ServerSocket serverSocket;
 
+    private String formattedTime;
+
+    private String formattedDate;
+
     private DataOutputStream dataOutputStream;
 
     private static final List<Socket> socketList = new ArrayList<>();
@@ -41,10 +45,11 @@ public class ServerFormController {
         LocalDate date = LocalDate.now();
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-        String formattedTime = time.format(timeFormatter);
-        String formattedDate = date.format(dateFormatter);
+        formattedTime = time.format(timeFormatter);
+        formattedDate = date.format(dateFormatter);
         lblTime.setText(formattedTime);
         lblDate.setText(formattedDate);
+        lblOnlineCount.setText("0");
         try {
             serverSocket = new ServerSocket(3002);
             txtArea.setText(formattedTime+" - Server started waiting for client connection...");
@@ -71,10 +76,16 @@ public class ServerFormController {
 
     private void handleClient(Socket clientSocket) {
         try {
-            DataInputStream inputStream = new DataInputStream(clientSocket.getInputStream());
+            DataInputStream datainputStream = new DataInputStream(clientSocket.getInputStream());
 
             while (true) {
-                String message = inputStream.readUTF();
+                String message = datainputStream.readUTF();
+                if (!message.contains(":")){
+                    socketList.remove(clientSocket);
+                    setOnlineClients();
+                    txtArea.appendText("\n"+formattedTime+ " - "+ message + " disconnected...");
+                }
+
                 for (DataOutputStream client : clients) {
                     client.writeUTF(message);
                     client.flush();

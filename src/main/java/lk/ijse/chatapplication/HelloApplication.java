@@ -1,6 +1,7 @@
 package lk.ijse.chatapplication;
 
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,7 +16,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/home_form.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle("Hello!");
+        stage.setResizable(false);
+        stage.setTitle("Home form");
         stage.show();
 
     }

@@ -1,19 +1,23 @@
 package lk.ijse.chatapplication.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class HomeFormController {
@@ -70,7 +74,14 @@ public class HomeFormController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Client Form");
+            stage.setResizable(false);
+            stage.setOnCloseRequest(Event::consume);
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            double screenWidth = screenBounds.getWidth();
+            double screenHeight = screenBounds.getHeight();
+            double rightEdge = screenWidth - screenHeight;
+            stage.setX(rightEdge);
+            stage.setTitle(txtName.getText()+" Form");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,6 +94,12 @@ public class HomeFormController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setOnCloseRequest(Event::consume);
+            double leftX = 0;
+            double topY = 100;
+            stage.setX(leftX);
+            stage.setY(topY);
             stage.setTitle("Server Form");
             stage.show();
         } catch (IOException e) {

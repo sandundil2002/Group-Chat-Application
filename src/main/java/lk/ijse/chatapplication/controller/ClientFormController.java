@@ -56,7 +56,6 @@ public class ClientFormController {
                     if (!message.startsWith(lblName.getText())){
                         Platform.runLater(() -> {
                             Text textNode = new Text(message);
-                            //txtVbox.setAlignment(Pos.TOP_LEFT);
                             txtVbox.getChildren().add(textNode);
                         });
                     }
@@ -97,6 +96,8 @@ public class ClientFormController {
     @FXML
     private void btnBackOnAction(ActionEvent actionEvent) {
         try {
+            String disconnect = lblName.getText();
+            dataOutputStream.writeUTF(disconnect);
             dataOutputStream.flush();
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();
