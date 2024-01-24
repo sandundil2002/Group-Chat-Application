@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -17,6 +19,7 @@ import java.net.*;
 
 public class ClientFormController {
 
+    public AnchorPane emojiPane;
     @FXML
     private VBox txtVbox;
 
@@ -42,6 +45,7 @@ public class ClientFormController {
     public void initialize() {
         lblName.setText(HomeFormController.name);
         clientName = lblName.getText();
+        emojiPane.setVisible(false);
 
         new Thread(() -> {
             try {
@@ -65,6 +69,7 @@ public class ClientFormController {
     }
 
     private boolean displayMsg(){
+        emojiPane.setVisible(false);
         if (validateMsg()) {
             String newMsg = "Me: " + txtMsg.getText();
             Text textNode = new Text(newMsg);
@@ -78,6 +83,7 @@ public class ClientFormController {
 
     @FXML
     private void btnSendOnAction(ActionEvent actionEvent) {
+        emojiPane.setVisible(false);
         if (displayMsg()) {
             try {
                 String sendMsg = lblName.getText() + " : " + txtMsg.getText();
@@ -106,10 +112,12 @@ public class ClientFormController {
 
     @FXML
     private void btnEmojiOnAction(ActionEvent actionEvent) {
+        emojiPane.setVisible(false);
     }
 
     @FXML
     private void btnImageOnAction(ActionEvent actionEvent) {
+        emojiPane.setVisible(false);
     }
 
     private boolean validateMsg(){
@@ -121,5 +129,14 @@ public class ClientFormController {
             txtMsg.setStyle("-fx-border-color:black;");
             return true;
         }
+    }
+
+    public void mouseMove(MouseEvent mouseEvent) {
+        emojiPane.setVisible(true);
+    }
+
+    @FXML
+    private void btnTextFieldOnAction(MouseEvent mouseEvent) {
+        emojiPane.setVisible(false);
     }
 }

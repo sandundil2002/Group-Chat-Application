@@ -18,14 +18,14 @@
             <Image url="@../assets/images/back%20btn.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
+      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" onMouseClicked="#btnTextFieldOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
-      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="92.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/chat%20head.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblName" layoutX="122.0" layoutY="11.0" prefHeight="32.0" prefWidth="66.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
+      <Label fx:id="lblName" layoutX="132.0" layoutY="11.0" prefHeight="32.0" prefWidth="66.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
       <JFXButton layoutX="82.0" layoutY="260.0" prefHeight="40.0" prefWidth="52.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="352.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -38,7 +38,7 @@
             <Image url="@../assets/images/emoji%20icon.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="251.0" layoutY="534.0" onAction="#btnEmojiOnAction" prefHeight="34.0" prefWidth="33.0" text="." textFill="#faf7f7" />
+      <JFXButton layoutX="251.0" layoutY="534.0" onAction="#btnEmojiOnAction" onMouseMoved="#mouseMove" prefHeight="34.0" prefWidth="33.0" text="." textFill="#faf7f7" />
       <Label alignment="CENTER" layoutX="3.0" layoutY="579.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
          <font>
             <Font size="10.0" />
@@ -55,5 +55,94 @@
             <VBox fx:id="txtVbox" prefHeight="458.0" prefWidth="370.0" styleClass="vbox-chat" stylesheets="@../assets/style/client.css" />
          </content>
       </ScrollPane>
+      <AnchorPane fx:id="emojiPane" layoutX="179.0" layoutY="428.0" prefHeight="102.0" prefWidth="198.0">
+         <children>
+            <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/1078-skype-laugh.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="38.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/1690-love-face-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="79.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/5218-cry-face-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="119.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/6686-hot-face-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="159.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/6999-cold-face-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="-1.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/4936-halo-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="38.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/8112-scream-emoji.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/7119-skype-angry.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="122.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9197-skype-sleeping.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="159.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/3468-skype-music.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="2.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/6397-skypeloveheartcircle.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="41.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9345-skype-middle.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="82.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9706-skype-mad.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="124.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/7338-skypeslowclap.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/6397-skypecurse.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="245.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/icons8-call%20normal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="300.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/icons8-video-call-45.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
