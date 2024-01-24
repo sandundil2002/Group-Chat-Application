@@ -4,15 +4,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 public class HomeFormController {
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
 
     @FXML
     private TextField txtName;
@@ -20,6 +30,14 @@ public class HomeFormController {
     static String name;
 
     public void initialize(){
+        LocalTime time = LocalTime.now();
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        String formattedTime = time.format(timeFormatter);
+        String formattedDate = date.format(dateFormatter);
+        lblTime.setText(formattedTime);
+        lblDate.setText(formattedDate);
         loadServerForm();
     }
 

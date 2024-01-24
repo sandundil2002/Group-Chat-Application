@@ -8,10 +8,19 @@ import javafx.scene.control.Label;
 
 import java.io.*;
 import java.net.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServerFormController {
+
+    @FXML
+    private Label lblTime;
+
+    @FXML
+    private Label lblDate;
 
     @FXML
     private JFXTextArea txtArea;
@@ -28,15 +37,23 @@ public class ServerFormController {
     private static final List<DataOutputStream> clients = new ArrayList<>();
 
     public void initialize() {
+        LocalTime time = LocalTime.now();
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        String formattedTime = time.format(timeFormatter);
+        String formattedDate = date.format(dateFormatter);
+        lblTime.setText(formattedTime);
+        lblDate.setText(formattedDate);
         try {
             serverSocket = new ServerSocket(3002);
-            txtArea.setText("Server started waiting for client connection...");
+            txtArea.setText(formattedTime+" - Server started waiting for client connection...");
 
             new Thread(() -> {
                 while (true) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        txtArea.appendText("\n"+HomeFormController.name + " connected ");
+                        txtArea.appendText("\n"+formattedTime+" - "+HomeFormController.name + " connected...");
                         dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);

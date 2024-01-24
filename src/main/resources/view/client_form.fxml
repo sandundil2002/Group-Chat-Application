@@ -18,6 +18,7 @@
             <Image url="@../assets/images/back%20btn.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,8 +32,7 @@
             <Image url="@../assets/images/theree%20dots.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
-      <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
+      <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" onKeyPressed="#btnEnterOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
       <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="251.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/emoji%20icon.png" />
@@ -50,9 +50,9 @@
          </image>
       </ImageView>
       <JFXButton layoutX="285.0" layoutY="535.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="38.0" text="." />
-      <ScrollPane layoutX="13.0" layoutY="68.0" prefHeight="450.0" prefWidth="374.0" styleClass="content" stylesheets="@../assets/style/client.css">
+      <ScrollPane layoutX="7.0" layoutY="61.0" prefHeight="457.0" prefWidth="386.0" styleClass="content" stylesheets="@../assets/style/client.css">
          <content>
-            <VBox fx:id="txtVbox" prefHeight="451.0" prefWidth="358.0" styleClass="vbox-chat" stylesheets="@../assets/style/client.css" />
+            <VBox fx:id="txtVbox" prefHeight="458.0" prefWidth="370.0" styleClass="vbox-chat" stylesheets="@../assets/style/client.css" />
          </content>
       </ScrollPane>
    </children>

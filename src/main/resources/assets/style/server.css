@@ -1,10 +1,10 @@
 .lbl-background {
-    -fx-background-color: linear-gradient(to left top,rgba(96,97,101,1) , #40EB4B);
+    -fx-background-color: #53E85A;
     -fx-font-family: Kanit;
     -fx-font-size: 25;
     -fx-text-fill: #000000;
     -fx-font-weight: 800;
-    -fx-background-radius: 30;
+    -fx-background-radius: 20;
 }
 
 .stop-btn{
@@ -14,4 +14,35 @@
     -fx-text-fill: #000000;
     -fx-font-size: 15;
     -fx-border-color: red;
+}
+
+.timeLabel {
+    -fx-font-size: 20px; /* Font size */
+    -fx-font-weight: bold; /* Normal font weight */
+    -fx-text-fill: gray; /* Gray text color */
+    -fx-padding: 2px 6px; /* Padding */
+}
+
+.dateLabel {
+    -fx-font-size: 12px; /* Font size */
+    -fx-font-weight: normal; /* Normal font weight */
+    -fx-text-fill: gray; /* Gray text color */
+    -fx-padding: 2px 6px; /* Padding */
+}
+
+.server-background {
+    -fx-background-color: #fff6f6; /* Background color for the chat interface */
+}
+
+.msg-area {
+    -fx-font-family: 'Calibri';/* Font family */
+    -fx-font-size: 15px; /* Font size */
+    -fx-text-fill: #000000; /* Dark text color */
+    -fx-background-color: #D6FFFF ;
+}
+
+.lblOnlineCount {
+    -fx-font-size: 16px; /* Font size */
+    -fx-font-weight: bold; /* Bold font weight */
+    -fx-text-fill: #007bff; /* Blue text color */
 }

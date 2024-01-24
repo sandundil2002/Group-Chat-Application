@@ -83,7 +83,10 @@
 
 .rgb{
     -fx-background-color: rgba(32, 201, 151, 0.11);
-    -fx-font-size: 15;
+    -fx-border-color: black;
+    -fx-border-radius: 10;
+    -fx-font-size: 18;
+    -fx-prompt-text-fill: #586EF5;
     -fx-background-radius: 30;
 }
 
@@ -97,16 +100,27 @@
     -fx-font-weight: 900;
 }
 
-.login-button {
-    -fx-background-color: #transparent; /* Background color for the login button */
-    -fx-text-fill: #ffffff; /* Text color for the button text */
-    -fx-font-size: 15px; /* Adjust font size as needed */
-    -fx-padding: 8px 12px; /* Adjust padding as needed */
-    -fx-border-color: #27ae60; /* Border color for the button */
-    -fx-border-width: 1px; /* Border width for the button */
-    -fx-border-radius: 5px; /* Rounded corners for the button */
+/* Styling for login button */
+.loginButton {
+    -fx-background-color: transparent; /* Green background color */
+    -fx-text-fill: #6F17EB; /* White text color */
+    -fx-font-size: 20px; /* Font size */
+    -fx-font-weight: 900; /* Bold text */
+    -fx-padding: 1px 16px; /* Padding */
+    -fx-border-radius: 10px; /* Border radius for rounded corners */
+    -fx-effect: dropshadow( three-pass-box , #f82a5a, 10, 0.0 , 0 , 1 );
 }
 
-.btn:hover {
-    -fx-background-color: #3FEA01; /* Background color on hover */
+.timeLabel {
+    -fx-font-size: 20px; /* Font size */
+    -fx-font-weight: bold; /* Normal font weight */
+    -fx-text-fill: #C39091; /* Gray text color */
+    -fx-padding: 2px 6px; /* Padding */
+}
+
+.dateLabel {
+    -fx-font-size: 12px; /* Font size */
+    -fx-font-weight: normal; /* Normal font weight */
+    -fx-text-fill: #C39091; /* Gray text color */
+    -fx-padding: 2px 6px; /* Padding */
 }
