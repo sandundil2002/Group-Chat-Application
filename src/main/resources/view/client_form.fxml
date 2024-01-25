@@ -57,7 +57,7 @@
       </ScrollPane>
       <AnchorPane fx:id="emojiPane" layoutX="179.0" layoutY="428.0" prefHeight="102.0" prefWidth="198.0">
          <children>
-            <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img1" fitHeight="34.0" fitWidth="40.0" onMouseClicked="#emoji1OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/1078-skype-laugh.gif" />
                </image>

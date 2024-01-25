@@ -4,7 +4,10 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.*;
 import java.net.*;
@@ -79,7 +82,7 @@ public class ServerFormController {
 
             while (true) {
                 String message = datainputStream.readUTF();
-                if (!message.contains(":")){
+                if (!message.contains(":") && !message.contains("-")){
                     socketList.remove(clientSocket);
                     setOnlineClients();
                     txtArea.appendText("\n"+formattedTime+ " - "+ message + " disconnected... " + clientSocket);
