@@ -3,12 +3,10 @@ package lk.ijse.chatapplication.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
@@ -35,15 +33,15 @@ public class ClientFormController {
     @FXML
     private JFXButton btnBack;
 
-    Socket socket;
+    private Socket socket;
 
-    DataOutputStream dataOutputStream;
+    private DataOutputStream dataOutputStream;
 
-    DataInputStream dataInputStream;
+    private DataInputStream dataInputStream;
 
-    static String clientName;
+    public static String clientName;
 
-    static String message;
+    private static String message;
 
     private final byte[] emojiByteCode1 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x82};
     private final byte[] emojiByteCode2 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x8D};
@@ -77,7 +75,6 @@ public class ClientFormController {
     private final String emj14 = new String(emojiByteCode14, StandardCharsets.UTF_8);
     private final String emj15 = new String(emojiByteCode15, StandardCharsets.UTF_8);
 
-
     public void initialize() {
         lblName.setText(HomeFormController.name);
         clientName = lblName.getText();
@@ -99,9 +96,8 @@ public class ClientFormController {
                     } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
                         HBox hBox = new HBox(15);
                         Label emoji = new Label();
-                        emoji.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-                        emoji.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(1))));
-                        emoji.setStyle("-fx-font-size: 18");
+                        String style = "-fx-background-color: #FAF56E; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 5px;";
+                        emoji.setStyle(style);
                         emoji.setText(message);
                         hBox.getChildren().add(emoji);
                         Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
@@ -197,210 +193,115 @@ public class ClientFormController {
     }
 
     private void displayEmoji(String imoji){
+        emojiPane.setVisible(false);
         HBox hBox = new HBox(15);
         String emoji =("Me - " + imoji);
         Label label = new Label();
-        label.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-        label.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(1))));
-        label.setStyle("-fx-font-size: 18");
+        String style = "-fx-background-color: #FAF56E; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 5px;";
+        label.setStyle(style);
         label.setText(emoji);
         hBox.setAlignment(Pos.BOTTOM_RIGHT);
         hBox.getChildren().add(label);
         Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
     }
 
-    @FXML
-    private void emoji1OnAction() {
-        emojiPane.setVisible(false);
-        displayEmoji(emj1);
+    private void sendEmoji(String emo){
         try {
-            String sendEmoji = lblName.getText() + " - " + emj1;
+            String sendEmoji = lblName.getText() + " - " + emo;
             dataOutputStream.writeUTF(sendEmoji);
             dataOutputStream.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    private void emoji1OnAction() {
+        displayEmoji(emj1);
+        sendEmoji(emj1);
     }
 
     @FXML
     private void emoji2OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj2);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj2;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj2);
     }
 
     @FXML
     private void emoji3OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj3);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj3;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj3);
     }
 
     @FXML
     private void emoji4OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj4);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj4;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj4);
     }
 
     @FXML
     private void emoji5OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj5);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj5;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj5);
     }
 
     @FXML
     private void emoji6OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj6);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj6;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj6);
     }
 
     @FXML
     private void emoji7OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj7);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj7;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj7);
     }
 
     @FXML
     private void emoji8OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj8);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj8;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj8);
     }
 
     @FXML
     private void emoji9OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj9);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj9;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj9);
     }
 
     @FXML
     private void emoji10OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj10);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj10;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj10);
     }
 
     @FXML
     private void emoji11OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj11);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj11;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj11);
     }
 
     @FXML
     private void emoji12OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj12);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj12;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj12);
     }
 
     @FXML
     public void emoji13OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj13);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj13;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj13);
     }
 
     @FXML
     public void emoji14OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj14);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj14;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj14);
     }
 
     @FXML
     public void emoji15OnAction() {
-        emojiPane.setVisible(false);
         displayEmoji(emj15);
-        try {
-            String sendEmoji = lblName.getText() + " - " + emj15;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        sendEmoji(emj15);
     }
 }
