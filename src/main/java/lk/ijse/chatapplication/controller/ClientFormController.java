@@ -11,10 +11,10 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import lk.ijse.chatapplication.util.EmojiUtil;
 
 import java.io.*;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 
 public class ClientFormController {
 
@@ -43,37 +43,7 @@ public class ClientFormController {
 
     private static String message;
 
-    private final byte[] emojiByteCode1 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x82};
-    private final byte[] emojiByteCode2 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x8D};
-    private final byte[] emojiByteCode3 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xAD};
-    private final byte[] emojiByteCode4 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xB5};
-    private final byte[] emojiByteCode5 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xB6};
-    private final byte[] emojiByteCode6 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x87};
-    private final byte[] emojiByteCode7 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xB1};
-    private final byte[] emojiByteCode8 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xA1};
-    private final byte[] emojiByteCode9 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xB4};
-    private final byte[] emojiByteCode10 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x97};
-    private final byte[] emojiByteCode11 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xB0};
-    private final byte[] emojiByteCode12 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x91, (byte) 0x8D};
-    private final byte[] emojiByteCode13 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x91, (byte) 0xAc};
-    private final byte[] emojiByteCode14 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x91, (byte) 0x8F};
-    private final byte[] emojiByteCode15 = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0xAF};
-
-    private final String emj1 = new String(emojiByteCode1, StandardCharsets.UTF_8);
-    private final String emj2 = new String(emojiByteCode2, StandardCharsets.UTF_8);
-    private final String emj3 = new String(emojiByteCode3, StandardCharsets.UTF_8);
-    private final String emj4 = new String(emojiByteCode4, StandardCharsets.UTF_8);
-    private final String emj5 = new String(emojiByteCode5, StandardCharsets.UTF_8);
-    private final String emj6 = new String(emojiByteCode6, StandardCharsets.UTF_8);
-    private final String emj7 = new String(emojiByteCode7, StandardCharsets.UTF_8);
-    private final String emj8 = new String(emojiByteCode8, StandardCharsets.UTF_8);
-    private final String emj9 = new String(emojiByteCode9, StandardCharsets.UTF_8);
-    private final String emj10 = new String(emojiByteCode10, StandardCharsets.UTF_8);
-    private final String emj11 = new String(emojiByteCode11, StandardCharsets.UTF_8);
-    private final String emj12 = new String(emojiByteCode12, StandardCharsets.UTF_8);
-    private final String emj13 = new String(emojiByteCode13, StandardCharsets.UTF_8);
-    private final String emj14 = new String(emojiByteCode14, StandardCharsets.UTF_8);
-    private final String emj15 = new String(emojiByteCode15, StandardCharsets.UTF_8);
+    private final EmojiUtil emojiUtil = new EmojiUtil();
 
     public void initialize() {
         lblName.setText(HomeFormController.name);
@@ -152,13 +122,8 @@ public class ClientFormController {
     }
 
     @FXML
-    private void btnEmojiOnAction() {
-        emojiPane.setVisible(false);
-    }
-
-    @FXML
     private void btnImageOnAction() {
-        emojiPane.setVisible(false);
+
     }
 
     private boolean validateMsg(){
@@ -170,26 +135,6 @@ public class ClientFormController {
             txtMsg.setStyle("-fx-border-color:black;");
             return true;
         }
-    }
-
-    @FXML
-    private void emojiPaneOnAction() {
-        emojiPane.setVisible(true);
-    }
-
-    @FXML
-    private void TextFieldMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
-
-    @FXML
-    private void txtPaneMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
-
-    @FXML
-    private void imgMoveOnAction() {
-        emojiPane.setVisible(false);
     }
 
     private void displayEmoji(String imoji){
@@ -217,91 +162,121 @@ public class ClientFormController {
 
     @FXML
     private void emoji1OnAction() {
-        displayEmoji(emj1);
-        sendEmoji(emj1);
+        displayEmoji(emojiUtil.emj1);
+        sendEmoji(emojiUtil.emj1);
     }
 
     @FXML
     private void emoji2OnAction() {
-        displayEmoji(emj2);
-        sendEmoji(emj2);
+        displayEmoji(emojiUtil.emj2);
+        sendEmoji(emojiUtil.emj2);
     }
 
     @FXML
     private void emoji3OnAction() {
-        displayEmoji(emj3);
-        sendEmoji(emj3);
+        displayEmoji(emojiUtil.emj3);
+        sendEmoji(emojiUtil.emj3);
     }
 
     @FXML
     private void emoji4OnAction() {
-        displayEmoji(emj4);
-        sendEmoji(emj4);
+        displayEmoji(emojiUtil.emj4);
+        sendEmoji(emojiUtil.emj4);
     }
 
     @FXML
     private void emoji5OnAction() {
-        displayEmoji(emj5);
-        sendEmoji(emj5);
+        displayEmoji(emojiUtil.emj5);
+        sendEmoji(emojiUtil.emj5);
     }
 
     @FXML
     private void emoji6OnAction() {
-        displayEmoji(emj6);
-        sendEmoji(emj6);
+        displayEmoji(emojiUtil.emj6);
+        sendEmoji(emojiUtil.emj6);
     }
 
     @FXML
     private void emoji7OnAction() {
-        displayEmoji(emj7);
-        sendEmoji(emj7);
+        displayEmoji(emojiUtil.emj7);
+        sendEmoji(emojiUtil.emj7);
     }
 
     @FXML
     private void emoji8OnAction() {
-        displayEmoji(emj8);
-        sendEmoji(emj8);
+        displayEmoji(emojiUtil.emj8);
+        sendEmoji(emojiUtil.emj8);
     }
 
     @FXML
     private void emoji9OnAction() {
-        displayEmoji(emj9);
-        sendEmoji(emj9);
+        displayEmoji(emojiUtil.emj9);
+        sendEmoji(emojiUtil.emj9);
     }
 
     @FXML
     private void emoji10OnAction() {
-        displayEmoji(emj10);
-        sendEmoji(emj10);
+        displayEmoji(emojiUtil.emj10);
+        sendEmoji(emojiUtil.emj10);
     }
 
     @FXML
     private void emoji11OnAction() {
-        displayEmoji(emj11);
-        sendEmoji(emj11);
+        displayEmoji(emojiUtil.emj11);
+        sendEmoji(emojiUtil.emj11);
     }
 
     @FXML
     private void emoji12OnAction() {
-        displayEmoji(emj12);
-        sendEmoji(emj12);
+        displayEmoji(emojiUtil.emj12);
+        sendEmoji(emojiUtil.emj12);
     }
 
     @FXML
     public void emoji13OnAction() {
-        displayEmoji(emj13);
-        sendEmoji(emj13);
+        displayEmoji(emojiUtil.emj13);
+        sendEmoji(emojiUtil.emj13);
     }
 
     @FXML
     public void emoji14OnAction() {
-        displayEmoji(emj14);
-        sendEmoji(emj14);
+        displayEmoji(emojiUtil.emj14);
+        sendEmoji(emojiUtil.emj14);
     }
 
     @FXML
     public void emoji15OnAction() {
-        displayEmoji(emj15);
-        sendEmoji(emj15);
+        displayEmoji(emojiUtil.emj15);
+        sendEmoji(emojiUtil.emj15);
+    }
+
+    @FXML
+    private void btnEmojiOnAction() {
+        emojiPane.setVisible(false);
+    }
+
+    @FXML
+    private void emojiPaneOnAction() {
+        emojiPane.setVisible(true);
+    }
+
+    @FXML
+    private void TextFieldMoveOnAction() {
+        emojiPane.setVisible(false);
+    }
+
+    @FXML
+    private void txtPaneMoveOnAction() {
+        emojiPane.setVisible(false);
+    }
+
+    @FXML
+    private void imgMoveOnAction() {
+        emojiPane.setVisible(false);
+    }
+
+    @FXML
+    private void sendMoveOnAction() {
+        emojiPane.setVisible(false);
     }
 }
