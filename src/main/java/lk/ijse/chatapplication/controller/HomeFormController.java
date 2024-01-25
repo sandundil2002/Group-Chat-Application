@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class HomeFormController {
@@ -28,6 +31,8 @@ public class HomeFormController {
 
     static String name;
 
+    private final HashSet<String> clientNames = new HashSet<>();
+
     public void initialize(){
         LocalTime time = LocalTime.now();
         LocalDate date = LocalDate.now();
@@ -42,25 +47,40 @@ public class HomeFormController {
 
     @FXML
     private void btnJoinOnAction() {
-        if (validateName()){
+        if (validateName() && checkClientName()){
             loadClientForm();
-            clearField();
-        } else {
-            new Alert(Alert.AlertType.WARNING,"Please enter a valid name").show();
             clearField();
         }
     }
 
     private boolean validateName() {
         name = txtName.getText();
-        boolean isNameValidated = Pattern.compile("^[A-z]{1,20}$").matcher(name).matches();
+        boolean isNameValidated = Pattern.compile("^[A-Za-z]{1,20}$").matcher(name).matches();
 
         if (!isNameValidated) {
+            new Alert(Alert.AlertType.WARNING,"Please enter a valid name").show();
             txtName.setStyle("-fx-border-color:#ff0000;");
             txtName.requestFocus();
+            clearField();
             return false;
-        } else
+        } else {
             return true;
+        }
+    }
+
+    private boolean checkClientName(){
+        String inputName = txtName.getText();
+
+        if (clientNames.contains(inputName)){
+            new Alert(Alert.AlertType.WARNING, "This name is already using").show();
+            txtName.setStyle("-fx-border-color:#ff0000;");
+            txtName.requestFocus();
+            clearField();
+            return false;
+        } else {
+            clientNames.add(inputName);
+            return true;
+        }
     }
 
     private void loadClientForm(){
