@@ -6,10 +6,13 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.util.EmojiUtil;
 import lk.ijse.chatapplication.util.TimeUtil;
@@ -68,6 +71,7 @@ public class ClientFormController {
                             Text textNode = new Text(message);
                             txtVbox.getChildren().add(textNode);
                         });
+
                     } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
                         HBox hBox = new HBox(15);
                         Label emoji = new Label();
@@ -76,6 +80,23 @@ public class ClientFormController {
                         emoji.setText(message);
                         hBox.getChildren().add(emoji);
                         Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
+
+                    } else if (!message.startsWith(lblName.getText())){
+                        Label image = new Label();
+                        String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                        image.setStyle(style);
+                        image.setStyle(lblName.getText());
+                        File file = new File(message);
+                        Image img = new Image(file.toURI().toString());
+                        ImageView imageView = new ImageView(img);
+                        imageView.setFitWidth(100);
+                        imageView.setFitHeight(100);
+
+                        HBox hBox = new HBox(12);
+                        hBox.setAlignment(Pos.CENTER_RIGHT);
+                        txtVbox.setAlignment(Pos.BOTTOM_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        Platform.runLater(() -> txtVbox.getChildren().add(hBox));
                     }
                 }
             } catch (IOException e) {
@@ -128,7 +149,37 @@ public class ClientFormController {
 
     @FXML
     private void btnImageOnAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
 
+        try {
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+                String imagePath = selectedFile.toURI().toString();
+
+                Image img = new Image(imagePath);
+                ImageView imageView = new ImageView(img);
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(100);
+
+                Label image = new Label(lblName.getText(), imageView);
+                String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                image.setStyle(style);
+
+                HBox hBox = new HBox(12, imageView, image);
+                hBox.setAlignment(Pos.CENTER_RIGHT);
+                txtVbox.setAlignment(Pos.BOTTOM_LEFT);
+
+                Platform.runLater(() -> txtVbox.getChildren().add(hBox));
+
+                dataOutputStream.writeUTF(lblName.getText() + " img " + selectedFile.getPath());
+                dataOutputStream.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean validateMsg(){
