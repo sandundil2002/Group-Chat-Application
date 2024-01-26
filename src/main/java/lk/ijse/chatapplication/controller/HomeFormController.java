@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.chatapplication.HelloApplication;
+import lk.ijse.chatapplication.util.DateTimeUtil;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -37,8 +38,9 @@ public class HomeFormController {
     private final HashSet<String> clientNames = new HashSet<>();
 
     public void initialize(){
-        updateRealTime();
+        lblTime = DateTimeUtil.updateRealTime();
         loadServerForm();
+        lblDate.setText(LocalDate.now().toString());
     }
 
     @FXML
@@ -111,17 +113,6 @@ public class HomeFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void updateRealTime() {
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-        lblDate.setText(LocalDate.now().toString());
-        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
-            lblTime.setText(LocalDateTime.now().format(timeFormatter));
-        }),
-                new KeyFrame(Duration.seconds(1)));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
     }
 
     private void clearField(){

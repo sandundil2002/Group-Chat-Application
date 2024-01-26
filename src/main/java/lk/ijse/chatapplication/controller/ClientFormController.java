@@ -1,6 +1,9 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -11,12 +14,18 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.chatapplication.util.EmojiUtil;
 
 import java.io.*;
 import java.net.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ClientFormController {
+
+    @FXML
+    private Label lblTime;
 
     @FXML
     private AnchorPane emojiPane;
@@ -49,6 +58,7 @@ public class ClientFormController {
         lblName.setText(HomeFormController.name);
         clientName = lblName.getText();
         emojiPane.setVisible(false);
+        updateRealTime();
 
         new Thread(() -> {
             try {
@@ -248,6 +258,16 @@ public class ClientFormController {
     public void emoji15OnAction() {
         displayEmoji(emojiUtil.emj15);
         sendEmoji(emojiUtil.emj15);
+    }
+
+    private void updateRealTime() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
+            lblTime.setText(LocalDateTime.now().format(timeFormatter));
+        }),
+                new KeyFrame(Duration.seconds(1)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     @FXML

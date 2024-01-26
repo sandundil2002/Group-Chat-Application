@@ -9,7 +9,7 @@
 
 .chat-name-label {
     -fx-text-fill: #333333; /* Text color for the name label */
-    -fx-font-size: 15px; /* Adjust font size as needed */
+    -fx-font-size: 20px; /* Adjust font size as needed */
     -fx-font-weight: bold; /* Make the text bold if desired */
     -fx-padding: 2px 5px; /* Adjust padding as needed */
 }
@@ -104,6 +104,13 @@
     -fx-padding: 5px; /* Padding for each message */
     -fx-background-color: #d9edf7; /* Background color for messages */
     -fx-border-radius: 5px; /* Border radius for messages */
+}
+
+.timeLabel {
+    -fx-font-size: 20px; /* Font size */
+    -fx-font-weight: bold; /* Normal font weight */
+    -fx-text-fill: #333333; /* Gray text color */
+    -fx-padding: 2px 6px; /* Padding */
 }
 
 

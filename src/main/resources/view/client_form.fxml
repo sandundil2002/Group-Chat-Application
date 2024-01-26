@@ -20,18 +20,13 @@
       </ImageView>
       <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" onMouseMoved="#TextFieldMoveOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
-      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="92.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="77.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/chat%20head.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblName" layoutX="132.0" layoutY="11.0" prefHeight="32.0" prefWidth="66.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
+      <Label fx:id="lblName" layoutX="116.0" layoutY="11.0" prefHeight="35.0" prefWidth="98.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
       <JFXButton layoutX="82.0" layoutY="260.0" prefHeight="40.0" prefWidth="52.0" text="." textFill="#3498db" />
-      <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="352.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/images/theree%20dots.png" />
-         </image>
-      </ImageView>
       <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" onMouseMoved="#sendMoveOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
       <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="251.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -134,14 +129,10 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="245.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="lblTime" layoutX="229.0" layoutY="7.0" prefHeight="42.0" prefWidth="134.0" styleClass="timeLabel" stylesheets="@../assets/style/client.css" text="Label" textFill="#0000009c" />
+      <ImageView fitHeight="42.0" fitWidth="38.0" layoutX="359.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/icons8-call%20normal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="300.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/images/icons8-video-call-45.png" />
+            <Image url="@../assets/images/theree%20dots.png" />
          </image>
       </ImageView>
    </children>
