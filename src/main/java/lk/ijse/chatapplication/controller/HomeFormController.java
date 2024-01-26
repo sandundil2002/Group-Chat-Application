@@ -9,13 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
+import lk.ijse.chatapplication.util.DateTimeUtil;
+
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class HomeFormController {
@@ -34,14 +31,8 @@ public class HomeFormController {
     private final HashSet<String> clientNames = new HashSet<>();
 
     public void initialize(){
-        LocalTime time = LocalTime.now();
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-        String formattedTime = time.format(timeFormatter);
-        String formattedDate = date.format(dateFormatter);
-        lblTime.setText(formattedTime);
-        lblDate.setText(formattedDate);
+        lblTime.setText(DateTimeUtil.getFormattedTime());
+        lblDate.setText(DateTimeUtil.getFormattedDate());
         loadServerForm();
     }
 

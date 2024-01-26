@@ -2,15 +2,12 @@ package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import lk.ijse.chatapplication.util.DateTimeUtil;
 
 import java.io.*;
 import java.net.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ServerFormController {
@@ -29,10 +26,6 @@ public class ServerFormController {
 
     private ServerSocket serverSocket;
 
-    private String formattedTime;
-
-    private String formattedDate;
-
     private DataOutputStream dataOutputStream;
 
     private static final List<Socket> socketList = new ArrayList<>();
@@ -40,24 +33,18 @@ public class ServerFormController {
     private static final List<DataOutputStream> clients = new ArrayList<>();
 
     public void initialize() {
-        LocalTime time = LocalTime.now();
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-        formattedTime = time.format(timeFormatter);
-        formattedDate = date.format(dateFormatter);
-        lblTime.setText(formattedTime);
-        lblDate.setText(formattedDate);
+        lblTime.setText(DateTimeUtil.getFormattedTime());
+        lblDate.setText(DateTimeUtil.getFormattedDate());
         lblOnlineCount.setText("0");
         try {
             serverSocket = new ServerSocket(3002);
-            txtArea.setText(formattedTime+" - Server started waiting for client connection...");
+            txtArea.setText(DateTimeUtil.getFormattedTime()+" - Server started waiting for client connection...");
 
             new Thread(() -> {
                 while (true) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        txtArea.appendText("\n"+formattedTime+" - "+HomeFormController.name + " connected... " + clientSocket);
+                        txtArea.appendText("\n"+DateTimeUtil.getFormattedTime()+" - "+HomeFormController.name + " connected... " + clientSocket);
                         dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);
@@ -82,7 +69,7 @@ public class ServerFormController {
                 if (!message.contains(":") && !message.contains("-")){
                     socketList.remove(clientSocket);
                     setOnlineClients();
-                    txtArea.appendText("\n"+formattedTime+ " - "+ message + " disconnected... " + clientSocket);
+                    txtArea.appendText("\n"+DateTimeUtil.getFormattedTime()+ " - "+ message + " disconnected... " + clientSocket);
                 }
 
                 for (DataOutputStream client : clients) {
@@ -100,7 +87,7 @@ public class ServerFormController {
     }
 
     @FXML
-    private void btnStopOnAction(ActionEvent actionEvent) {
+    private void btnStopOnAction() {
         System.exit(0);
     }
 }
