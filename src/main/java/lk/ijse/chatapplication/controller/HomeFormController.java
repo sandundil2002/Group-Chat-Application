@@ -1,8 +1,5 @@
 package lk.ijse.chatapplication.controller;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,14 +8,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import lk.ijse.chatapplication.HelloApplication;
-import lk.ijse.chatapplication.util.DateTimeUtil;
+import lk.ijse.chatapplication.util.TimeUtil;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.regex.Pattern;
 
@@ -38,8 +32,8 @@ public class HomeFormController {
     private final HashSet<String> clientNames = new HashSet<>();
 
     public void initialize(){
-        lblTime = DateTimeUtil.updateRealTime();
         loadServerForm();
+        TimeUtil.updateRealTime(lblTime);
         lblDate.setText(LocalDate.now().toString());
     }
 

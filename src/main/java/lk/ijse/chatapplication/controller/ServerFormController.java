@@ -1,18 +1,14 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
+import lk.ijse.chatapplication.util.TimeUtil;
 
 import java.io.*;
 import java.net.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -35,15 +31,16 @@ public class ServerFormController {
 
     private DataOutputStream dataOutputStream;
 
-    private DateTimeFormatter timeFormatter;
-
     private static final List<Socket> socketList = new ArrayList<>();
 
     private static final List<DataOutputStream> clients = new ArrayList<>();
 
+    private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
+
     public void initialize() {
         lblOnlineCount.setText("0");
-        updateRealTime();
+        TimeUtil.updateRealTimeServer(lblTime);
+        lblDate.setText(LocalDate.now().toString());
         try {
             serverSocket = new ServerSocket(3002);
             txtArea.setText(LocalTime.now().format(timeFormatter) + " - Server started waiting for client connection...");
@@ -88,17 +85,6 @@ public class ServerFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void updateRealTime() {
-        timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
-        lblDate.setText(LocalDate.now().toString());
-        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
-            lblTime.setText(LocalDateTime.now().format(timeFormatter));
-        }),
-                new KeyFrame(Duration.seconds(1)));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
     }
 
     private void setOnlineClients() {
