@@ -34,7 +34,7 @@
          </font>
       </Label>
       <JFXButton layoutX="155.0" layoutY="394.0" maxHeight="42.0" maxWidth="110.0" onAction="#btnJoinOnAction" prefHeight="42.0" prefWidth="110.0" styleClass="loginButton" stylesheets="@../assets/style/home.css" text="Join" />
-      <Label fx:id="lblTime" layoutX="279.0" layoutY="4.0" prefHeight="42.0" prefWidth="118.0" styleClass="timeLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
-      <Label fx:id="lblDate" layoutX="297.0" layoutY="36.0" prefHeight="20.0" prefWidth="92.0" styleClass="dateLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
+      <Label fx:id="lblTime" layoutX="264.0" layoutY="4.0" prefHeight="42.0" prefWidth="134.0" styleClass="timeLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
+      <Label fx:id="lblDate" layoutX="292.0" layoutY="36.0" prefHeight="20.0" prefWidth="92.0" styleClass="dateLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
    </children>
 </AnchorPane>

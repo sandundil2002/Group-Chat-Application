@@ -1,5 +1,8 @@
 package lk.ijse.chatapplication.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +11,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.chatapplication.HelloApplication;
-import lk.ijse.chatapplication.util.DateTimeUtil;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.regex.Pattern;
 
@@ -31,8 +37,7 @@ public class HomeFormController {
     private final HashSet<String> clientNames = new HashSet<>();
 
     public void initialize(){
-        lblTime.setText(DateTimeUtil.getFormattedTime());
-        lblDate.setText(DateTimeUtil.getFormattedDate());
+        updateRealTime();
         loadServerForm();
     }
 
@@ -106,6 +111,17 @@ public class HomeFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void updateRealTime() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        lblDate.setText(LocalDate.now().toString());
+        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
+            lblTime.setText(LocalDateTime.now().format(timeFormatter));
+        }),
+                new KeyFrame(Duration.seconds(1)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     private void clearField(){

@@ -38,7 +38,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="lblTime" layoutX="279.0" layoutY="5.0" prefHeight="42.0" prefWidth="118.0" styleClass="timeLabel" stylesheets="@../assets/style/server.css" text="Label" textFill="#0000009c" />
-      <Label fx:id="lblDate" layoutX="299.0" layoutY="38.0" prefHeight="20.0" prefWidth="92.0" styleClass="dateLabel" stylesheets="@../assets/style/server.css" text="Label" textFill="#0000009c" />
+      <Label fx:id="lblTime" layoutX="282.0" layoutY="5.0" prefHeight="42.0" prefWidth="114.0" styleClass="timeLabel" stylesheets="@../assets/style/server.css" text="Label" textFill="#0000009c" />
+      <Label fx:id="lblDate" layoutX="301.0" layoutY="38.0" prefHeight="20.0" prefWidth="92.0" styleClass="dateLabel" stylesheets="@../assets/style/server.css" text="Label" textFill="#0000009c" />
    </children>
 </AnchorPane>
