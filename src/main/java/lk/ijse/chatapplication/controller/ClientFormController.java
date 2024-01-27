@@ -17,8 +17,6 @@ import lk.ijse.chatapplication.util.TimeUtil;
 import java.io.*;
 import java.net.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class ClientFormController {
 
@@ -77,22 +75,14 @@ public class ClientFormController {
                             Platform.runLater(()->txtVbox.getChildren().addAll(msg));
                         });
 
-                    } else if (message.startsWith("img")){
-                        //Image img = new Image();
-                        ImageView imageView = new ImageView();
-                        imageView.setFitWidth(100);
-                        imageView.setFitHeight(100);
-
-                        Label imageLabel = new Label();
-                        String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
-                        imageLabel.setStyle(style);
-
-                        HBox hBox = new HBox(12, imageView, imageLabel);
-                        hBox.setAlignment(Pos.CENTER_RIGHT);
-                        txtVbox.setAlignment(Pos.BOTTOM_LEFT);
-                        hBox.setAlignment(Pos.CENTER_LEFT);
-
-                        Platform.runLater(() -> txtVbox.getChildren().add(hBox));
+                    } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
+                        File receiveFile = new File(message);
+                        Image image = new Image(receiveFile.toURI().toString());
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitHeight(170);
+                        imageView.setFitWidth(200);
+                        Label imageLabel = new Label("", imageView);
+                        Platform.runLater(() -> txtVbox.getChildren().addAll(imageLabel));
                     }
                 }
             } catch (IOException e) {
@@ -151,48 +141,32 @@ public class ClientFormController {
     private void btnImageOnAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        File file = fileChooser.showOpenDialog(txtMsg.getScene().getWindow());
 
-        try {
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
-            File selectedFile = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            try {
+                byte[] imageBytes = Files.readAllBytes(file.toPath());
 
-            if (selectedFile != null) {
-                String imagePath = selectedFile.toURI().toString();
+                dataOutputStream.writeUTF( lblName.getText()+ " -img- ");
+                dataOutputStream.write(imageBytes);
+                dataOutputStream.flush();
 
-                Image img = new Image(imagePath);
+                Image img = new Image(new ByteArrayInputStream(imageBytes));
                 ImageView imageView = new ImageView(img);
                 imageView.setFitWidth(100);
                 imageView.setFitHeight(100);
 
-                Label image = new Label(lblName.getText(), imageView);
-                String style = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
-                image.setStyle(style);
-
-                HBox hBox = new HBox(12, imageView, image);
+                HBox hBox = new HBox(12, imageView);
                 hBox.setAlignment(Pos.CENTER_RIGHT);
                 txtVbox.setAlignment(Pos.TOP_LEFT);
 
                 Platform.runLater(() -> txtVbox.getChildren().add(hBox));
-
-                byte[] imageBytes = convertImageToByteArray(imagePath);
-
-                dataOutputStream.writeInt(imageBytes.length);
-                dataOutputStream.write(imageBytes);
-                //dataOutputStream.writeUTF(lblName.getText());
-                dataOutputStream.flush();
+            } catch (IOException e){
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private byte[] convertImageToByteArray(String filePath){
-        try {
-            URI uri = URI.create(filePath);
-            Path path = Paths.get(uri);
-            return Files.readAllBytes(path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

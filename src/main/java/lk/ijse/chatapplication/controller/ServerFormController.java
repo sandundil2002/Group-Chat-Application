@@ -65,6 +65,7 @@ public class ServerFormController {
         }
     }
 
+
     private void handleClient(Socket clientSocket) {
         try {
             DataInputStream datainputStream = new DataInputStream(clientSocket.getInputStream());
@@ -76,6 +77,14 @@ public class ServerFormController {
                     socketList.remove(clientSocket);
                     setOnlineClients();
                     txtArea.appendText("\n" + LocalTime.now().format(timeFormatter) + " - " + message + " disconnected... " + clientSocket);
+                }
+
+                if (message.startsWith("-img-")){
+                    byte msg = datainputStream.readByte();
+                    for (DataOutputStream img : clients){
+                        img.writeInt(msg);
+                        img.flush();
+                    }
                 }
 
                 for (DataOutputStream client : clients) {
