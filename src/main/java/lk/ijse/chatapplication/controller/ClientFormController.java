@@ -210,16 +210,6 @@ public class ClientFormController {
         }
     }
 
-    private void sendEmoji(String emo){
-        try {
-            String sendEmoji = lblName.getText() + " - " + emo;
-            dataOutputStream.writeUTF(sendEmoji);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @FXML
     private void emoji1OnAction() {
         txtMsg.setText(emojiUtil.emj1);
