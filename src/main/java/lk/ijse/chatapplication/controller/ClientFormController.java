@@ -210,10 +210,6 @@ public class ClientFormController {
         }
     }
 
-    private void displayEmoji(String imoji){
-        txtMsg.setText(imoji);
-    }
-
     private void sendEmoji(String emo){
         try {
             String sendEmoji = lblName.getText() + " - " + emo;
@@ -226,92 +222,77 @@ public class ClientFormController {
 
     @FXML
     private void emoji1OnAction() {
-        displayEmoji(emojiUtil.emj1);
-        //sendEmoji(emojiUtil.emj1);
+        txtMsg.setText(emojiUtil.emj1);
     }
 
     @FXML
     private void emoji2OnAction() {
-        displayEmoji(emojiUtil.emj2);
-        sendEmoji(emojiUtil.emj2);
+        txtMsg.setText(emojiUtil.emj2);
     }
 
     @FXML
     private void emoji3OnAction() {
-        displayEmoji(emojiUtil.emj3);
-        sendEmoji(emojiUtil.emj3);
+        txtMsg.setText(emojiUtil.emj3);
     }
 
     @FXML
     private void emoji4OnAction() {
-        displayEmoji(emojiUtil.emj4);
-        sendEmoji(emojiUtil.emj4);
+        txtMsg.setText(emojiUtil.emj4);
     }
 
     @FXML
     private void emoji5OnAction() {
-        displayEmoji(emojiUtil.emj5);
-        sendEmoji(emojiUtil.emj5);
+        txtMsg.setText(emojiUtil.emj5);
     }
 
     @FXML
     private void emoji6OnAction() {
-        displayEmoji(emojiUtil.emj6);
-        sendEmoji(emojiUtil.emj6);
+        txtMsg.setText(emojiUtil.emj6);
     }
 
     @FXML
     private void emoji7OnAction() {
-        displayEmoji(emojiUtil.emj7);
-        sendEmoji(emojiUtil.emj7);
+        txtMsg.setText(emojiUtil.emj7);
     }
 
     @FXML
     private void emoji8OnAction() {
-        displayEmoji(emojiUtil.emj8);
-        sendEmoji(emojiUtil.emj8);
+        txtMsg.setText(emojiUtil.emj8);
     }
 
     @FXML
     private void emoji9OnAction() {
-        displayEmoji(emojiUtil.emj9);
-        sendEmoji(emojiUtil.emj9);
+        txtMsg.setText(emojiUtil.emj9);
     }
 
     @FXML
     private void emoji10OnAction() {
-        displayEmoji(emojiUtil.emj10);
-        sendEmoji(emojiUtil.emj10);
+        txtMsg.setText(emojiUtil.emj10);
     }
 
     @FXML
     private void emoji11OnAction() {
-        displayEmoji(emojiUtil.emj11);
-        sendEmoji(emojiUtil.emj11);
+        txtMsg.setText(emojiUtil.emj11);
     }
 
     @FXML
     private void emoji12OnAction() {
-        displayEmoji(emojiUtil.emj12);
-        sendEmoji(emojiUtil.emj12);
+        txtMsg.setText(emojiUtil.emj12);
     }
 
     @FXML
     public void emoji13OnAction() {
-        displayEmoji(emojiUtil.emj13);
-        sendEmoji(emojiUtil.emj13);
+        txtMsg.setText(emojiUtil.emj13);
     }
 
     @FXML
     public void emoji14OnAction() {
-        displayEmoji(emojiUtil.emj14);
-        sendEmoji(emojiUtil.emj14);
+        txtMsg.setText(emojiUtil.emj14);
     }
 
     @FXML
     public void emoji15OnAction() {
-        displayEmoji(emojiUtil.emj15);
-        sendEmoji(emojiUtil.emj15);
+        txtMsg.setText(emojiUtil.emj15);
     }
 
     @FXML
