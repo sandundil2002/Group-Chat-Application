@@ -25,7 +25,7 @@
       <version>17.0.6</version>
     </dependency>
 
-<dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
@@ -42,6 +42,12 @@
       <groupId>com.jfoenix</groupId>
       <artifactId>jfoenix</artifactId>
       <version>9.0.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.gluonhq</groupId>
+      <artifactId>emoji</artifactId>
+      <version>1.0.1</version>
     </dependency>
 
   </dependencies>

@@ -2,7 +2,7 @@ module lk.ijse.chatapplication {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.jfoenix;
-
+    requires com.gluonhq.emoji;
 
     opens lk.ijse.chatapplication to javafx.fxml;
     exports lk.ijse.chatapplication;

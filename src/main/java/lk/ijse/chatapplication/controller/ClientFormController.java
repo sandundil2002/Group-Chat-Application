@@ -19,6 +19,9 @@ import lk.ijse.chatapplication.util.TimeUtil;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ClientFormController {
 
@@ -82,20 +85,20 @@ public class ClientFormController {
                         Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
 
                     } else if (!message.startsWith(lblName.getText())){
-                        Label image = new Label();
-                        String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
-                        image.setStyle(style);
-                        image.setStyle(lblName.getText());
-                        File file = new File(message);
-                        Image img = new Image(file.toURI().toString());
+                        Image img = new Image(message);
                         ImageView imageView = new ImageView(img);
                         imageView.setFitWidth(100);
                         imageView.setFitHeight(100);
 
-                        HBox hBox = new HBox(12);
+                        Label imageLabel = new Label();
+                        String style = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                        imageLabel.setStyle(style);
+
+                        HBox hBox = new HBox(12, imageView, imageLabel);
                         hBox.setAlignment(Pos.CENTER_RIGHT);
                         txtVbox.setAlignment(Pos.BOTTOM_LEFT);
                         hBox.setAlignment(Pos.CENTER_LEFT);
+
                         Platform.runLater(() -> txtVbox.getChildren().add(hBox));
                     }
                 }
@@ -165,20 +168,34 @@ public class ClientFormController {
                 imageView.setFitHeight(100);
 
                 Label image = new Label(lblName.getText(), imageView);
-                String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                String style = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
                 image.setStyle(style);
 
                 HBox hBox = new HBox(12, imageView, image);
                 hBox.setAlignment(Pos.CENTER_RIGHT);
-                txtVbox.setAlignment(Pos.BOTTOM_LEFT);
+                txtVbox.setAlignment(Pos.TOP_LEFT);
 
                 Platform.runLater(() -> txtVbox.getChildren().add(hBox));
 
-                dataOutputStream.writeUTF(lblName.getText() + " img " + selectedFile.getPath());
+                byte[] imageBytes = convertImageToByteArray(imagePath);
+
+                dataOutputStream.writeInt(imageBytes.length);
+                dataOutputStream.write(imageBytes);
+                //dataOutputStream.writeUTF(lblName.getText());
                 dataOutputStream.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private byte[] convertImageToByteArray(String filePath){
+        try {
+            URI uri = URI.create(filePath);
+            Path path = Paths.get(uri);
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -194,16 +211,7 @@ public class ClientFormController {
     }
 
     private void displayEmoji(String imoji){
-        emojiPane.setVisible(false);
-        HBox hBox = new HBox(15);
-        String emoji =("Me - " + imoji);
-        Label label = new Label();
-        String style = "-fx-background-color: #FAF56E; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 5px;";
-        label.setStyle(style);
-        label.setText(emoji);
-        hBox.setAlignment(Pos.BOTTOM_RIGHT);
-        hBox.getChildren().add(label);
-        Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
+        txtMsg.setText(imoji);
     }
 
     private void sendEmoji(String emo){
@@ -219,7 +227,7 @@ public class ClientFormController {
     @FXML
     private void emoji1OnAction() {
         displayEmoji(emojiUtil.emj1);
-        sendEmoji(emojiUtil.emj1);
+        //sendEmoji(emojiUtil.emj1);
     }
 
     @FXML

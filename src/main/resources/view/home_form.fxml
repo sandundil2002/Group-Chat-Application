@@ -21,19 +21,19 @@
          </image>
       </ImageView>
       <Label layoutX="7.0" layoutY="45.0" text="Play Tech" textFill="#00ffb2" />
-      <ImageView fitHeight="265.0" fitWidth="400.0" layoutX="1.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pane" fitHeight="265.0" fitWidth="400.0" layoutX="1.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/home%20page%20bottom.png" />
          </image>
       </ImageView>
       <Label layoutX="1.0" layoutY="267.0" prefHeight="46.0" prefWidth="398.0" styleClass="text-field-normal" stylesheets="@../assets/style/home.css" text="           Enter Your Name" />
-      <TextField fx:id="txtName" layoutX="95.0" layoutY="333.0" prefHeight="34.0" prefWidth="233.0" promptText="Name" styleClass="rgb" stylesheets="@../assets/style/home.css" />
+      <TextField fx:id="txtName" layoutX="95.0" layoutY="333.0" onAction="#btnJoinOnAction" prefHeight="34.0" prefWidth="233.0" promptText="Name" styleClass="rgb" stylesheets="@../assets/style/home.css" />
       <Label alignment="CENTER" layoutX="3.0" layoutY="582.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <JFXButton layoutX="155.0" layoutY="394.0" maxHeight="42.0" maxWidth="110.0" onAction="#btnJoinOnAction" prefHeight="42.0" prefWidth="110.0" styleClass="loginButton" stylesheets="@../assets/style/home.css" text="Join" />
+      <JFXButton fx:id="join" layoutX="155.0" layoutY="394.0" maxHeight="42.0" maxWidth="110.0" onAction="#btnJoinOnAction" prefHeight="42.0" prefWidth="110.0" styleClass="loginButton" stylesheets="@../assets/style/home.css" text="Join" />
       <Label fx:id="lblTime" layoutX="264.0" layoutY="4.0" prefHeight="42.0" prefWidth="134.0" styleClass="timeLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
       <Label fx:id="lblDate" layoutX="292.0" layoutY="36.0" prefHeight="20.0" prefWidth="92.0" styleClass="dateLabel" stylesheets="@../assets/style/home.css" text="Label" textFill="#0000009c" />
    </children>

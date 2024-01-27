@@ -18,7 +18,7 @@
             <Image url="@../assets/images/back%20btn.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" onMouseMoved="#TextFieldMoveOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
+      <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" onAction="#btnSendOnAction" onMouseMoved="#TextFieldMoveOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="77.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>

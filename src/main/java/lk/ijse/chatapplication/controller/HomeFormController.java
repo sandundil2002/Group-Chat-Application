@@ -1,5 +1,6 @@
 package lk.ijse.chatapplication.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.HelloApplication;
 import lk.ijse.chatapplication.util.TimeUtil;
@@ -18,6 +22,7 @@ import java.util.regex.Pattern;
 
 public class HomeFormController {
 
+    public JFXButton join;
     @FXML
     private Label lblDate;
 

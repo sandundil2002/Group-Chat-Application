@@ -71,10 +71,11 @@ public class ServerFormController {
 
             while (true) {
                 String message = datainputStream.readUTF();
+
                 if (!message.contains(":") && !message.contains("-")){
                     socketList.remove(clientSocket);
                     setOnlineClients();
-                    txtArea.appendText("\n" + LocalTime.now().format(timeFormatter) + " - "+ message + " disconnected... " + clientSocket);
+                    txtArea.appendText("\n" + LocalTime.now().format(timeFormatter) + " - " + message + " disconnected... " + clientSocket);
                 }
 
                 for (DataOutputStream client : clients) {
