@@ -69,29 +69,23 @@ public class ClientFormController {
 
                 while (true) {
                     message = dataInputStream.readUTF();
-                    if (!message.startsWith(lblName.getText()) && !message.contains("-")){
+                    if (!message.startsWith(lblName.getText()) && message.contains(":")){
                         Platform.runLater(() -> {
-                            Text textNode = new Text(message);
-                            txtVbox.getChildren().add(textNode);
+                            Label msg = new Label();
+                            String style = "-fx-background-color: rgba(0, 255, 0, 0.5); -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                            msg.setStyle(style);
+                            msg.setText(message);
+                            Platform.runLater(()->txtVbox.getChildren().addAll(msg));
                         });
 
-                    } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
-                        HBox hBox = new HBox(15);
-                        Label emoji = new Label();
-                        String style = "-fx-background-color: #FAF56E; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 5px;";
-                        emoji.setStyle(style);
-                        emoji.setText(message);
-                        hBox.getChildren().add(emoji);
-                        Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
-
-                    } else if (!message.startsWith(lblName.getText())){
-                        Image img = new Image(message);
-                        ImageView imageView = new ImageView(img);
+                    } else if (message.startsWith("img")){
+                        //Image img = new Image();
+                        ImageView imageView = new ImageView();
                         imageView.setFitWidth(100);
                         imageView.setFitHeight(100);
 
                         Label imageLabel = new Label();
-                        String style = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+                        String style = "-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
                         imageLabel.setStyle(style);
 
                         HBox hBox = new HBox(12, imageView, imageLabel);
@@ -111,14 +105,16 @@ public class ClientFormController {
     private boolean displayMsg(){
         emojiPane.setVisible(false);
         if (validateMsg()) {
-            String newMsg = "Me: " + txtMsg.getText();
-            Text textNode = new Text(newMsg);
-            TextFlow textFlow = new TextFlow(textNode);
-            textFlow.setTextAlignment(TextAlignment.RIGHT);
-            txtVbox.getChildren().add(textFlow);
+            String newMsg = txtMsg.getText();
+            Label label = new Label(newMsg);
+            String style = "-fx-background-color: #44BCFB; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
+            label.setStyle(style);
+            txtVbox.setAlignment(Pos.TOP_RIGHT);
+            Platform.runLater(()->txtVbox.getChildren().addAll(label));
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @FXML
