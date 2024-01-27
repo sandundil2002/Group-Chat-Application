@@ -9,9 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.util.EmojiUtil;
@@ -52,6 +49,8 @@ public class ClientFormController {
     public static String clientName;
 
     private static String message;
+
+    private String displayMsg;
 
     private final EmojiUtil emojiUtil = new EmojiUtil();
 
@@ -107,10 +106,12 @@ public class ClientFormController {
         if (validateMsg()) {
             String newMsg = txtMsg.getText();
             Label label = new Label(newMsg);
+            HBox hBox = new HBox(label);
             String style = "-fx-background-color: #44BCFB; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5px;";
             label.setStyle(style);
-            txtVbox.setAlignment(Pos.TOP_RIGHT);
-            Platform.runLater(()->txtVbox.getChildren().addAll(label));
+            hBox.setAlignment(Pos.TOP_RIGHT);
+            hBox.setStyle("-fx-border-radius: 5px");
+            Platform.runLater(()->txtVbox.getChildren().addAll(hBox));
             return true;
         } else {
             return false;
@@ -208,93 +209,102 @@ public class ClientFormController {
 
     @FXML
     private void emoji1OnAction() {
-        txtMsg.setText(emojiUtil.emj1);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj1);
     }
 
     @FXML
     private void emoji2OnAction() {
-        txtMsg.setText(emojiUtil.emj2);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj2);
     }
 
     @FXML
     private void emoji3OnAction() {
-        txtMsg.setText(emojiUtil.emj3);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj3);
     }
 
     @FXML
     private void emoji4OnAction() {
-        txtMsg.setText(emojiUtil.emj4);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj4);
     }
 
     @FXML
     private void emoji5OnAction() {
-        txtMsg.setText(emojiUtil.emj5);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj5);
     }
 
     @FXML
     private void emoji6OnAction() {
-        txtMsg.setText(emojiUtil.emj6);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj6);
     }
 
     @FXML
     private void emoji7OnAction() {
-        txtMsg.setText(emojiUtil.emj7);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj7);
     }
 
     @FXML
     private void emoji8OnAction() {
-        txtMsg.setText(emojiUtil.emj8);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj8);
     }
 
     @FXML
     private void emoji9OnAction() {
-        txtMsg.setText(emojiUtil.emj9);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj9);
     }
 
     @FXML
     private void emoji10OnAction() {
-        txtMsg.setText(emojiUtil.emj10);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj10);
     }
 
     @FXML
     private void emoji11OnAction() {
-        txtMsg.setText(emojiUtil.emj11);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj11);
     }
 
     @FXML
     private void emoji12OnAction() {
-        txtMsg.setText(emojiUtil.emj12);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj12);
     }
 
     @FXML
     public void emoji13OnAction() {
-        txtMsg.setText(emojiUtil.emj13);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj13);
     }
 
     @FXML
     public void emoji14OnAction() {
-        txtMsg.setText(emojiUtil.emj14);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj14);
     }
 
     @FXML
     public void emoji15OnAction() {
-        txtMsg.setText(emojiUtil.emj15);
+        displayMsg = txtMsg.getText();
+        txtMsg.setText(displayMsg + emojiUtil.emj15);
     }
 
     @FXML
-    private void btnEmojiOnAction() {
-        emojiPane.setVisible(false);
-    }
+    private void btnEmojiOnAction() {emojiPane.setVisible(false); }
 
     @FXML
-    private void emojiPaneOnAction() {
-        emojiPane.setVisible(true);
-    }
+    private void emojiPaneOnAction() { emojiPane.setVisible(true); }
 
     @FXML
-    private void TextFieldMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
+    private void TextFieldMoveOnAction() { emojiPane.setVisible(false);}
 
     @FXML
     private void txtPaneMoveOnAction() {
@@ -307,7 +317,5 @@ public class ClientFormController {
     }
 
     @FXML
-    private void sendMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
+    private void sendMoveOnAction() { emojiPane.setVisible(false); }
 }
