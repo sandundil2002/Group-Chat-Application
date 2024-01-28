@@ -80,7 +80,10 @@ public class ClientFormController {
                         });
 
                     } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
-                        Image image = convertStringToImage(message);
+                        String modifiedMessage = message.substring(message.indexOf("-")+1);
+                        String removedMessage = message.substring(0, message.indexOf("-"));
+                        System.out.println(removedMessage);
+                        Image image = convertStringToImage(modifiedMessage);
                         ImageView imageView = new ImageView(image);
                         Platform.runLater(() -> txtVbox.getChildren().addAll(imageView));
                     }
@@ -159,8 +162,9 @@ public class ClientFormController {
                 Platform.runLater(() -> txtVbox.getChildren().add(hBox));
 
                 String imageAsTextToSend = convertImageToString(imageView.getImage());
-                String message = imageAsTextToSend;
-                dataOutputStream.writeUTF(lblName.getText() + "-" + message);
+                String imgText = imageAsTextToSend;
+                System.out.println(imgText);
+                dataOutputStream.writeUTF(lblName.getText() + "-" + imgText);
                 dataOutputStream.flush();
             } catch (IOException e){
                 e.printStackTrace();
