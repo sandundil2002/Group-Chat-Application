@@ -13,10 +13,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lk.ijse.chatapplication.util.EmojiUtil;
 import lk.ijse.chatapplication.util.TimeUtil;
+import javafx.embed.swing.SwingFXUtils;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
-import java.nio.file.Files;
+import java.util.Base64;
 
 public class ClientFormController {
 
@@ -76,13 +80,9 @@ public class ClientFormController {
                         });
 
                     } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
-                        File receiveFile = new File(message);
-                        Image image = new Image(receiveFile.toURI().toString());
+                        Image image = convertStringToImage(message);
                         ImageView imageView = new ImageView(image);
-                        imageView.setFitHeight(170);
-                        imageView.setFitWidth(200);
-                        Label imageLabel = new Label("", imageView);
-                        Platform.runLater(() -> txtVbox.getChildren().addAll(imageLabel));
+                        Platform.runLater(() -> txtVbox.getChildren().addAll(imageView));
                     }
                 }
             } catch (IOException e) {
@@ -148,14 +148,7 @@ public class ClientFormController {
 
         if (file != null) {
             try {
-                byte[] imageBytes = Files.readAllBytes(file.toPath());
-
-                dataOutputStream.writeUTF( lblName.getText()+ " -img- ");
-                dataOutputStream.write(imageBytes);
-                dataOutputStream.flush();
-
-                Image img = new Image(new ByteArrayInputStream(imageBytes));
-                ImageView imageView = new ImageView(img);
+                ImageView imageView = new ImageView(file.toURI().toString());
                 imageView.setFitWidth(100);
                 imageView.setFitHeight(100);
 
@@ -164,10 +157,45 @@ public class ClientFormController {
                 txtVbox.setAlignment(Pos.TOP_LEFT);
 
                 Platform.runLater(() -> txtVbox.getChildren().add(hBox));
+
+                String imageAsTextToSend = convertImageToString(imageView.getImage());
+                String message = imageAsTextToSend;
+                dataOutputStream.writeUTF(lblName.getText() + "-" + message);
+                dataOutputStream.flush();
             } catch (IOException e){
                 e.printStackTrace();
             }
         }
+    }
+
+    private Image convertStringToImage(String imageAsString) throws IOException {
+        byte[] imageBytes = Base64.getDecoder().decode(imageAsString);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(imageBytes);
+        return new Image(inputStream);
+    }
+
+    private String convertImageToString(Image image) throws IOException {
+        double maxWidth = 600;
+        double maxHeight = 400;
+        double width = image.getWidth();
+        double height = image.getHeight();
+
+        if (width > maxWidth || height > maxHeight) {
+            double scaleFactor = Math.min(maxWidth / width, maxHeight / height);
+            width *= scaleFactor;
+            height *= scaleFactor;
+        }
+
+        BufferedImage resizedImage = new BufferedImage((int) width, (int) height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(SwingFXUtils.fromFXImage(image, null), 0, 0, (int) width, (int) height, null);
+        g.dispose();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ImageIO.write(resizedImage, "jpg", outputStream);
+
+        byte[] imageBytes = outputStream.toByteArray();
+        return Base64.getEncoder().encodeToString(imageBytes);
     }
 
     private boolean validateMsg(){

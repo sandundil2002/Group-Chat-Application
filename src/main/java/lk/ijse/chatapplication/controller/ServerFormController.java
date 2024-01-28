@@ -6,8 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import lk.ijse.chatapplication.util.TimeUtil;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
 import java.io.*;
 import java.net.*;
+import java.nio.ByteBuffer;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +39,7 @@ public class ServerFormController {
 
     private static final List<DataOutputStream> clients = new ArrayList<>();
 
-    private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
+    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
 
     public void initialize() {
         lblOnlineCount.setText("0");
@@ -56,15 +60,14 @@ public class ServerFormController {
                         setOnlineClients();
                         new Thread(() -> handleClient(clientSocket)).start();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        throw new RuntimeException();
                     }
                 }
             }).start();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
-
 
     private void handleClient(Socket clientSocket) {
         try {
@@ -77,14 +80,6 @@ public class ServerFormController {
                     socketList.remove(clientSocket);
                     setOnlineClients();
                     txtArea.appendText("\n" + LocalTime.now().format(timeFormatter) + " - " + message + " disconnected... " + clientSocket);
-                }
-
-                if (message.startsWith("-img-")){
-                    byte msg = datainputStream.readByte();
-                    for (DataOutputStream img : clients){
-                        img.writeInt(msg);
-                        img.flush();
-                    }
                 }
 
                 for (DataOutputStream client : clients) {
