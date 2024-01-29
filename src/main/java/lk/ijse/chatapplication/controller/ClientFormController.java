@@ -82,10 +82,13 @@ public class ClientFormController {
                     } else if (!message.startsWith(lblName.getText()) && message.contains("-")){
                         String modifiedMessage = message.substring(message.indexOf("-")+1);
                         String removedMessage = message.substring(0, message.indexOf("-"));
-                        System.out.println(removedMessage);
                         Image image = convertStringToImage(modifiedMessage);
                         ImageView imageView = new ImageView(image);
-                        Platform.runLater(() -> txtVbox.getChildren().addAll(imageView));
+                        imageView.setFitWidth(100);
+                        imageView.setFitHeight(100);
+                        Label label = new Label(removedMessage);
+                        HBox hBox = new HBox(12, label,imageView);
+                        Platform.runLater(() -> txtVbox.getChildren().addAll(hBox));
                     }
                 }
             } catch (IOException e) {
@@ -161,9 +164,7 @@ public class ClientFormController {
 
                 Platform.runLater(() -> txtVbox.getChildren().add(hBox));
 
-                String imageAsTextToSend = convertImageToString(imageView.getImage());
-                String imgText = imageAsTextToSend;
-                System.out.println(imgText);
+                String imgText = convertImageToString(imageView.getImage());
                 dataOutputStream.writeUTF(lblName.getText() + "-" + imgText);
                 dataOutputStream.flush();
             } catch (IOException e){
@@ -310,18 +311,13 @@ public class ClientFormController {
     private void emojiPaneOnAction() { emojiPane.setVisible(true); }
 
     @FXML
-    private void TextFieldMoveOnAction() { emojiPane.setVisible(false);}
+    private void TextFieldMoveOnAction() { emojiPane.setVisible(false); }
 
     @FXML
-    private void txtPaneMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
+    private void txtPaneMoveOnAction() { emojiPane.setVisible(false); }
 
     @FXML
-    private void imgMoveOnAction() {
-        emojiPane.setVisible(false);
-    }
+    private void imgMoveOnAction() { emojiPane.setVisible(false); }
 
     @FXML
-    private void sendMoveOnAction() { emojiPane.setVisible(false); }
-}
+    private void sendMoveOnAction() { emojiPane.setVisible(false); } }

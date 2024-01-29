@@ -1,18 +1,16 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import lk.ijse.chatapplication.util.TimeUtil;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.*;
-import java.nio.ByteBuffer;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -23,13 +21,12 @@ public class ServerFormController {
     private Label lblTime;
 
     @FXML
-    private Label lblDate;
-
-    @FXML
     private JFXTextArea txtArea;
 
     @FXML
     private Label lblOnlineCount;
+
+    private int seconds = 0;
 
     private ServerSocket serverSocket;
 
@@ -43,8 +40,10 @@ public class ServerFormController {
 
     public void initialize() {
         lblOnlineCount.setText("0");
-        TimeUtil.updateRealTimeServer(lblTime);
-        lblDate.setText(LocalDate.now().toString());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer()));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
         try {
             serverSocket = new ServerSocket(3002);
             txtArea.setText(LocalTime.now().format(timeFormatter) + " - Server started waiting for client connection...");
@@ -92,6 +91,16 @@ public class ServerFormController {
         }
     }
 
+    private void updateTimer() {
+        seconds++;
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        int remainingSeconds = seconds % 60;
+        String formattedTime = String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds);
+        lblTime.setText(formattedTime);
+    }
+
+    @FXML
     private void setOnlineClients() {
         Platform.runLater(() -> lblOnlineCount.setText(String.valueOf(socketList.size())));
     }

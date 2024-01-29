@@ -34,7 +34,7 @@
          </image>
       </ImageView>
       <JFXButton layoutX="251.0" layoutY="534.0" onAction="#btnEmojiOnAction" onMouseMoved="#emojiPaneOnAction" prefHeight="34.0" prefWidth="33.0" text="." textFill="#faf7f7" />
-      <Label alignment="CENTER" layoutX="3.0" layoutY="579.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE - All Rights Reserved. MIT License.">
+      <Label alignment="CENTER" layoutX="3.0" layoutY="579.0" prefHeight="16.0" prefWidth="392.0" text="Copyright 2024 GDSE 68 - All Rights Reserved. MIT License.">
          <font>
             <Font size="10.0" />
          </font>

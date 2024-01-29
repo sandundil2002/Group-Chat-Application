@@ -18,14 +18,5 @@ public class TimeUtil {
             Platform.runLater(() -> label.setText(currentTime));
         }, 0, 1, TimeUnit.SECONDS);
     }
-
-    public static void updateRealTimeServer(Label label) {
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh : mm a");
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(() -> {
-            String currentTime = LocalDateTime.now().format(timeFormatter);
-            Platform.runLater(() -> label.setText(currentTime));
-        }, 0, 1, TimeUnit.SECONDS);
-    }
 }
 
