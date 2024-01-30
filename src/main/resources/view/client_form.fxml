@@ -54,77 +54,77 @@
          <children>
             <ImageView fitHeight="34.0" fitWidth="40.0" onMouseClicked="#emoji1OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/1078-skype-laugh.gif" />
+                  <Image url="@../assets/images/1078-skype-laugh.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="38.0" layoutY="-2.0" onMouseClicked="#emoji2OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/1690-love-face-emoji.gif" />
+                  <Image url="@../assets/images/1690-love-face-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="79.0" layoutY="-2.0" onMouseClicked="#emoji3OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/5218-cry-face-emoji.gif" />
+                  <Image url="@../assets/images/5218-cry-face-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="119.0" layoutY="-2.0" onMouseClicked="#emoji4OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/6686-hot-face-emoji.gif" />
+                  <Image url="@../assets/images/6686-hot-face-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="159.0" layoutY="-2.0" onMouseClicked="#emoji5OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/6999-cold-face-emoji.gif" />
+                  <Image url="@../assets/images/6999-cold-face-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="-1.0" layoutY="33.0" onMouseClicked="#emoji6OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/4936-halo-emoji.gif" />
+                  <Image url="@../assets/images/4936-halo-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="38.0" layoutY="33.0" onMouseClicked="#emoji7OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Telegram%20Animated%20Emojis%20Pack-emojigg-pack/8112-scream-emoji.gif" />
+                  <Image url="@../assets/images/8112-scream-emoji.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="82.0" layoutY="36.0" onMouseClicked="#emoji8OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/7119-skype-angry.gif" />
+                  <Image url="@../assets/images/7119-skype-angry.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="122.0" layoutY="36.0" onMouseClicked="#emoji9OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9197-skype-sleeping.gif" />
+                  <Image url="@../assets/images/9197-skype-sleeping.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="159.0" layoutY="33.0" onMouseClicked="#emoji10OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/3468-skype-music.gif" />
+                  <Image url="@../assets/images/3468-skype-music.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="2.0" layoutY="71.0" onMouseClicked="#emoji11OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/6397-skypeloveheartcircle.gif" />
+                  <Image url="@../assets/images/6397-skypeloveheartcircle.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="41.0" layoutY="71.0" onMouseClicked="#emoji12OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9345-skype-middle.gif" />
+                  <Image url="@../assets/images/9345-skype-middle.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="82.0" layoutY="71.0" onMouseClicked="#emoji13OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/9706-skype-mad.gif" />
+                  <Image url="@../assets/images/9706-skype-mad.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="124.0" layoutY="71.0" onMouseClicked="#emoji14OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/7338-skypeslowclap.gif" />
+                  <Image url="@../assets/images/7338-skypeslowclap.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="164.0" layoutY="71.0" onMouseClicked="#emoji15OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/images/Animated%20Skype%20Emojis-emojigg-pack/6397-skypecurse.gif" />
+                  <Image url="@../assets/images/6397-skypecurse.gif" />
                </image>
             </ImageView>
          </children>
