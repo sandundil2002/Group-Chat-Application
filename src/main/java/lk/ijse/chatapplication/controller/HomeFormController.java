@@ -27,9 +27,9 @@ public class HomeFormController {
     @FXML
     private TextField txtName;
 
-    static String name;
+    public static String name;
 
-    private final HashSet<String> clientNames = new HashSet<>();
+    public static final HashSet<String> clientNames = new HashSet<>();
 
     public void initialize(){
         loadServerForm();

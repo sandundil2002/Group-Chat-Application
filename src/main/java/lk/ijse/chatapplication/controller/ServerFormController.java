@@ -79,6 +79,7 @@ public class ServerFormController {
                     socketList.remove(clientSocket);
                     setOnlineClients();
                     txtArea.appendText("\n" + LocalTime.now().format(timeFormatter) + " - " + message + " disconnected... " + clientSocket);
+                    HomeFormController.clientNames.remove(message);
                 }
 
                 for (DataOutputStream client : clients) {
