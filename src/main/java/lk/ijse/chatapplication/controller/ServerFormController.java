@@ -57,7 +57,7 @@ public class ServerFormController {
                         clients.add(dataOutputStream);
                         socketList.add(clientSocket);
                         setOnlineClients();
-                        new Thread(() -> handleClient(clientSocket)).start();
+                        new Thread(() -> handleMsg(clientSocket)).start();
                     } catch (IOException e) {
                         throw new RuntimeException();
                     }
@@ -68,7 +68,7 @@ public class ServerFormController {
         }
     }
 
-    private void handleClient(Socket clientSocket) {
+    private void handleMsg(Socket clientSocket) {
         try {
             DataInputStream datainputStream = new DataInputStream(clientSocket.getInputStream());
 
