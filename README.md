@@ -1,4 +1,4 @@
-<h1 align="center" id="title">Group Chat Application</h1>
+<h1 align="center" id="title"> <b>Play Tech Group Chat Application</b></h1>
 
 <p align="center"><img src="https://i.ibb.co/gWYfZPr/group-chat-4.png" alt="project-image"></p>
 
