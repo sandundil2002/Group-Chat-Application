@@ -15,14 +15,14 @@
       <Label layoutY="2.0" prefHeight="52.0" prefWidth="400.0" styleClass="chat-head-label" stylesheets="@../assets/style/client.css" />
       <ImageView fitHeight="42.0" fitWidth="47.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/back%20btn.png" />
+            <Image url="@../assets/images/backbtn.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtMsg" layoutX="7.0" layoutY="534.0" onAction="#btnSendOnAction" onMouseMoved="#TextFieldMoveOnAction" prefHeight="34.0" prefWidth="317.0" promptText="Type your message" styleClass="type-msg-field" stylesheets="@../assets/style/client.css" />
       <JFXButton fx:id="btnBack" layoutX="7.0" layoutY="4.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="42.0" text="." textFill="#3498db" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="77.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/chat%20head.png" />
+            <Image url="@../assets/images/chathead.png" />
          </image>
       </ImageView>
       <Label fx:id="lblName" layoutX="116.0" layoutY="11.0" prefHeight="35.0" prefWidth="98.0" styleClass="chat-name-label" stylesheets="@../assets/style/client.css" text="Name" />
@@ -30,7 +30,7 @@
       <JFXButton layoutX="328.0" layoutY="530.0" onAction="#btnSendOnAction" onMouseMoved="#sendMoveOnAction" prefHeight="40.0" prefWidth="66.0" styleClass="send-msg-button" stylesheets="@../assets/style/client.css" text="Send" />
       <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="251.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/emoji%20icon.png" />
+            <Image url="@../assets/images/emojiicon.png" />
          </image>
       </ImageView>
       <JFXButton layoutX="251.0" layoutY="534.0" onAction="#btnEmojiOnAction" onMouseMoved="#emojiPaneOnAction" prefHeight="34.0" prefWidth="33.0" text="." textFill="#faf7f7" />
@@ -132,7 +132,7 @@
       <Label fx:id="lblTime" layoutX="229.0" layoutY="7.0" prefHeight="42.0" prefWidth="134.0" styleClass="timeLabel" stylesheets="@../assets/style/client.css" text="Label" textFill="#0000009c" />
       <ImageView fitHeight="42.0" fitWidth="38.0" layoutX="359.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/theree%20dots.png" />
+            <Image url="@../assets/images/thereedots.png" />
          </image>
       </ImageView>
    </children>

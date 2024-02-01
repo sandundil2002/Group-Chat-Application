@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="264.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/home%20page%20top.png" />
+            <Image url="@../assets/images/homepagetop.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -23,7 +23,7 @@
       <Label layoutX="7.0" layoutY="45.0" text="Play Tech" textFill="#00ffb2" />
       <ImageView fx:id="pane" fitHeight="265.0" fitWidth="400.0" layoutX="1.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/images/home%20page%20bottom.png" />
+            <Image url="@../assets/images/homepagebottom.png" />
          </image>
       </ImageView>
       <Label layoutX="1.0" layoutY="267.0" prefHeight="46.0" prefWidth="398.0" styleClass="text-field-normal" stylesheets="@../assets/style/home.css" text="           Enter Your Name" />
