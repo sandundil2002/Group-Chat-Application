@@ -32,7 +32,7 @@ Here're some of the project's best features:
 <p>1. Clone the Repository:</p>
 
 ```
-https://github.com/sandundil2002/Chat-Application.git
+https://github.com/sandundil2002/Play-tech-group-chat-application.git
 ```
 
 <p>2. Install dependencies (Java 11 and Maven required).</p>
