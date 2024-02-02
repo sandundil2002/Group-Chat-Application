@@ -1,9 +1,7 @@
 package lk.ijse.chatapplication.controller;
 
 import com.jfoenix.controls.JFXTextArea;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
