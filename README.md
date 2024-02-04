@@ -1,4 +1,4 @@
-<h1 align="center" id="title"> <b>Play Tech Group Chat Application</b></h1>
+<h1><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=62&pause=1000&random=false&width=1100&height=100&lines=Play+Tech+Group+Chat+Application" alt="Typing SVG" /></a></h1>
 
 <p align="center"><img src="https://i.ibb.co/gWYfZPr/group-chat-4.png" alt="project-image"></p>
 
