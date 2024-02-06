@@ -2,7 +2,6 @@ module lk.ijse.chatapplication {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.jfoenix;
-    requires com.gluonhq.emoji;
     requires java.desktop;
     requires javafx.swing;
 
